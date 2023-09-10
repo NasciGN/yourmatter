@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
+import '../../resources/auth.dart';
 import '../../utils/constantes.dart';
+import '../logon_page.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -165,7 +167,8 @@ class _LoginFormState extends State<LoginForm> {
                       setState(() {
                         _isLoading = true;
                       });
-
+                      await loginUser(context, _controllerEmail.text,
+                          _controllerPassword.text);
                       Get.offAndToNamed('/home');
                       setState(() {
                         _isLoading = false;
@@ -202,7 +205,12 @@ class _LoginFormState extends State<LoginForm> {
                   style: TextStyle(color: Colors.white),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LogonPage()));
+                  },
                   child: const Text(
                     "Crie uma conta grátis aqui",
                     style:
