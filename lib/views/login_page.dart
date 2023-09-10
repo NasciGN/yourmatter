@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../utils/constantes.dart';
+import 'forms/login_form.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -46,10 +47,10 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Container(
             padding: const EdgeInsets.only(
-                right: defaultpd * 3,
-                left: defaultpd * 3,
-                top: defaultpd * 3,
-                bottom: defaultpd),
+              right: defaultpd * 3,
+              left: defaultpd * 3,
+              top: defaultpd * 3,
+            ),
             margin: EdgeInsets.only(top: size.height * 0.3),
             height: size.height * 0.7,
             decoration: const BoxDecoration(
@@ -57,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(defaultpd * 4),
                 )),
+            child: const LoginForm(),
           ),
         ]),
       ),
