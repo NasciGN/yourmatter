@@ -247,9 +247,13 @@ class _LogonFormState extends State<LogonForm> {
                       setState(() {
                         _isLoading = true;
                       });
-                      await createUser(context, _controllerEmail.text,
-                          _controllerPassword1.text);
-                      Get.offAndToNamed('/home');
+                      await createUser(
+                          context,
+                          _controllerNome.text,
+                          _controllerEmail.text,
+                          _controllerPassword1.text,
+                          _isProfessor);
+                      Get.offAndToNamed('/login');
                       setState(() {
                         _isLoading = false;
                       });

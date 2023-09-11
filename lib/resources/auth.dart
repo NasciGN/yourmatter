@@ -11,7 +11,40 @@ FirebaseAuth auth = FirebaseAuth.instance;
 final User? currentUser = auth.currentUser;
 String? userId = currentUser?.uid;
 
-Future<void> createUser(context, email, pass) async {
+Future<void> createUser(context, name, email, pass, isprofessor) async {
+  try {
+    UserCredential userCredential =
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: pass,
+    );
+
+    User? user = userCredential.user;
+
+    if (user != null) {
+      // ignore: deprecated_member_use
+      await user.updateProfile(displayName: name);
+      await user.reload(); // Recarrega o usuário para aplicar as alterações
+      user = FirebaseAuth.instance.currentUser; // Obtém o usuário atualizado
+    }
+    String userId = userCredential.user?.uid ?? '';
+    saveUserRegister(userId, isprofessor);
+  } catch (e) {
+    print('Erro ao criar a conta: $e');
+  }
+}
+
+Future<void> updateUser(nome, email) async {
+  try {
+    await currentUser?.updateProfile(displayName: nome);
+    if (email != currentUser?.email) {
+      await currentUser?.updateEmail(email);
+    }
+  } catch (e) {
+    print('Erro ao atualizar os dados: $e');
+  }
+}
+/* Future<void> createUser(context, name, email, pass, isprofessor) async {
   try {
     final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -19,7 +52,7 @@ Future<void> createUser(context, email, pass) async {
       password: pass,
     );
     String userId = credential.user?.uid ?? '';
-    saveUserRegister(userId, email);
+    saveUserRegister(userId, name, email, isprofessor);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
       AnimatedSnackBar.material(
@@ -37,16 +70,51 @@ Future<void> createUser(context, email, pass) async {
   } catch (e) {
     print(e);
   }
+} */
+
+Future<void> getUserData(context, userid) async {
+  try {
+    QuerySnapshot querySnapshot =
+        await db.collection("users").where("userid", isEqualTo: userid).get();
+    final documents = querySnapshot.docs;
+    for (final document in documents) {
+      document.reference.delete();
+    }
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'email-already-in-use') {
+      AnimatedSnackBar.material(
+        'Email ja utilizado',
+        type: AnimatedSnackBarType.error,
+        desktopSnackBarPosition: DesktopSnackBarPosition.topCenter,
+      ).show(context);
+      //print('No user found for that email.');
+      throw Exception('No user found for that email.');
+    }
+  } catch (error) {
+    print('Erro 3034: $error');
+  }
+}
+
+Future<void> deleteDocID(userid) async {
+  try {
+    QuerySnapshot querySnapshot =
+        await db.collection("users").where("userid", isEqualTo: userid).get();
+    final documents = querySnapshot.docs;
+    for (final document in documents) {
+      document.reference.delete();
+    }
+  } catch (error) {
+    print('Erro 3034: $error');
+  }
 }
 
 Future<void> saveUserRegister(
-  final userId,
-  userEmail,
+  userid,
+  isprofessor,
 ) async {
   final registerUser = <String, String>{
-    "createDt": "${FieldValue.serverTimestamp()}",
-    "userID": "$userId",
-    "userEmail": "$userEmail",
+    "userid": "$userid",
+    "professor": "$isprofessor"
   };
 
   try {
@@ -65,7 +133,7 @@ Future<void> loginUser(context, email, pass) async {
       'Login efetuado com sucesso',
       type: AnimatedSnackBarType.info,
       mobilePositionSettings: const MobilePositionSettings(
-        topOnAppearance: 100,
+        topOnAppearance: 50,
         // topOnDissapear: 50,
         // bottomOnAppearance: 100,
         // bottomOnDissapear: 50,
