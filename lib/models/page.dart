@@ -1,7 +1,7 @@
 class Note {
   final String document;
   final String title;
-  final String folder;
+  final String turma;
   final DateTime date;
   final String uid;
   final String
@@ -10,14 +10,14 @@ class Note {
       {required this.document,
       required this.searchableDocument,
       required this.title,
-      required this.folder,
+      required this.turma,
       required this.date,
       required this.uid});
 
   Map<String, dynamic> toJson() {
     return {
       'title': title,
-      'folder': folder,
+      'turma': turma,
       'date': date,
       'uid': uid,
       'document': document,

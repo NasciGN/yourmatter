@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:your_matter/widgets/cadernos/card_cadernos.dart';
+import '../../providers/cadernos_provider.dart';
 import '../../utils/constantes.dart';
 
 class MeusCadernos extends StatefulWidget {
@@ -12,9 +13,13 @@ class MeusCadernos extends StatefulWidget {
 class _MeusCadernosState extends State<MeusCadernos> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(defaultpd),
-      child: Text('Cadernos'),
-    );
+    return Padding(
+        padding: EdgeInsets.all(defaultpd),
+        child: Scaffold(
+          body: Consumer(builder: (context, ref, child) {
+            final conststreamProv = ref.watch(cadernoProvider);
+            return const CardCaderno();
+          }),
+        ));
   }
 }
