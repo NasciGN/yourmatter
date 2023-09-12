@@ -71,7 +71,19 @@ class _AccountMenuState extends State<AccountMenu> {
                     child: const Text('Cancelar'),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      try {
+                        FirebaseAuth.instance
+                            .sendPasswordResetEmail(email: onlineUser.email!);
+                        EasyLoading.instance.toastPosition =
+                            EasyLoadingToastPosition.bottom;
+                        EasyLoading.showToast('Email de recuperação enviado!');
+                      } catch (e) {
+                        EasyLoading.showToast(
+                            'Erro ao enviar email de recuperação.');
+                        // Error
+                      }
+                    },
                     child: const Text('Enviar e-mail'),
                   ),
                 ],

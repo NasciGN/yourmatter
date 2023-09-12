@@ -95,6 +95,19 @@ Future<void> getUserData(context, userid) async {
   }
 }
 
+Future<bool?> isUserProfessor(userid) async {
+  QuerySnapshot userSnapshot = await FirebaseFirestore.instance
+      .collection('users')
+      .where('userid', isEqualTo: userid)
+      .get();
+  if (userSnapshot.docs.isNotEmpty) {
+    DocumentSnapshot document = userSnapshot.docs.first;
+    bool isProfessor = document['professor'];
+    return isProfessor;
+  }
+  return null;
+}
+
 Future<void> deleteDocID(userid) async {
   try {
     QuerySnapshot querySnapshot =
