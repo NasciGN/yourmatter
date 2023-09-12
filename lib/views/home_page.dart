@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_matter/resources/auth.dart';
 import 'package:your_matter/utils/constantes.dart';
+import '../widgets/cadernos/home_cadernos_page.dart';
+import '../widgets/turmas/home_turmas_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
