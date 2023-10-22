@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:your_matter/models/page.dart';
 import 'package:your_matter/resources/auth.dart';
 import 'package:your_matter/utils/constantes.dart';
+import 'package:your_matter/views/functions/create_Page.dart';
 import '../widgets/cadernos/home_cadernos_page.dart';
 import '../widgets/turmas/home_turmas_page.dart';
 
@@ -20,6 +23,28 @@ class _HomePageState extends State<HomePage>
   late User onlineUser;
   bool? _isprofessor;
   late TabController _tabController;
+
+  void CreateNewNote() {
+    Note newNote = Note(
+        document: '',
+        searchableDocument: '',
+        title: '',
+        turma: '',
+        date: DateTime.now(),
+        uid: '');
+
+    goToNewPage(newNote, true);
+  }
+
+  void goToNewPage(Note note, bool isNewNote) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => NewPage(
+                  note: note,
+                  isNewNote: isNewNote,
+                )));
+  }
 
   @override
   void initState() {
@@ -43,7 +68,17 @@ class _HomePageState extends State<HomePage>
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 15, bottom: 15),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Note newNote = Note(
+                document: '',
+                searchableDocument: '',
+                title: '',
+                turma: '',
+                date: DateTime.now(),
+                uid: '');
+            bool teste = true;
+            goToNewPage(newNote, teste);
+          },
           backgroundColor: bgColor,
           child: const Icon(
             Icons.add_outlined,

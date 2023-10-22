@@ -1,0 +1,97 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
+import 'package:get/get.dart';
+import 'package:your_matter/models/page.dart';
+
+class NewPage extends StatefulWidget {
+  Note note;
+  bool isNewNote;
+  NewPage({super.key, required this.note, required this.isNewNote});
+
+  @override
+  State<NewPage> createState() => _NewPageState();
+}
+
+class _NewPageState extends State<NewPage> {
+  QuillController _controller = QuillController.basic();
+
+  @override
+  void initState() {
+    super.initState();
+    loadingExistingNote();
+  }
+
+  void loadingExistingNote() {
+    final doc = Document()..insert(0, widget.note.title);
+    setState(() {
+      _controller = QuillController(
+          document: doc, selection: const TextSelection.collapsed(offset: 0));
+    });
+  }
+
+  void addNewNote(int i) {}
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            if (widget.isNewNote && !_controller.document.isEmpty()) {}
+            Get.offNamed('/home');
+          },
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
+      body: Column(children: [
+        QuillProvider(
+          configurations: QuillConfigurations(controller: _controller),
+          child: QuillToolbar.basic(
+            showDividers: false,
+            showFontFamily: false,
+            showFontSize: false,
+            showBoldButton: false,
+            showItalicButton: false,
+            showSmallButton: false,
+            showUnderLineButton: false,
+            showStrikeThrough: false,
+            showInlineCode: false,
+            showColorButton: false,
+            showBackgroundColorButton: false,
+            showClearFormat: false,
+            showAlignmentButtons: false,
+            showLeftAlignment: false,
+            showCenterAlignment: false,
+            showRightAlignment: false,
+            showJustifyAlignment: false,
+            showHeaderStyle: false,
+            showListNumbers: false,
+            showListBullets: false,
+            showListCheck: false,
+            showCodeBlock: false,
+            showQuote: false,
+            showIndent: false,
+            showLink: false,
+            showDirection: false,
+            showSearchButton: false,
+            showSubscript: false,
+            showSuperscript: false,
+          ),
+        ),
+        Expanded(
+            child: Container(
+          margin: EdgeInsets.all(32),
+          child: QuillProvider(
+            configurations: QuillConfigurations(controller: _controller),
+            child: QuillEditor.basic(readOnly: false),
+          ),
+        ))
+      ]),
+    );
+  }
+}
