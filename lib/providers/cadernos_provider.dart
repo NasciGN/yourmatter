@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:rxdart/rxdart.dart';
 import '../models/page.dart';
 
 class PageControl {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // Obter o ID do usuário logado no Firebase
   Future<String?> getUserId() async {
@@ -19,16 +21,15 @@ class PageControl {
   // Adicionar uma nova página com o ID do usuário logado
   Future<void> addPageWithUserId(myPage page) async {
     final userId = await getUserId();
+    final PageData = {
+      'content': page.content,
+      'title': page.title,
+      'turma': page.turma,
+      'uid': userId, // Defina o UID com o ID do usuário logado
+      'searchableDocument': page.searchableDocument,
+    };
     if (userId != null) {
-      final collection = FirebaseFirestore.instance.collection('pages');
-      await collection.doc(userId).set({
-        'content': page.content,
-        'title': page.title,
-        'turma': page.turma,
-        'date': page.date,
-        'uid': userId, // Defina o UID com o ID do usuário logado
-        'searchableDocument': page.searchableDocument,
-      });
+      await FirebaseFirestore.instance.collection('pages').add(PageData);
     } else {
       if (kDebugMode) {
         print("Nenhum usuário autenticado.");
@@ -45,7 +46,6 @@ class PageControl {
         'content': page.content,
         'title': page.title,
         'turma': page.turma,
-        'date': page.date,
         'uid': userId, // Defina o UID com o ID do usuário logado
         'searchableDocument': page.searchableDocument,
       });
@@ -81,12 +81,32 @@ class PageControl {
           content: data['content'],
           title: data['title'],
           turma: data['turma'],
-          date: (data['date'] as Timestamp).toDate(),
           uid: data['uid'],
           searchableDocument: data['searchableDocument'],
         );
       }
     }
     return null;
+  }
+
+  Stream<List<myPage>> getPagesForCurrentUser() {
+    return _auth.authStateChanges().switchMap((user) {
+      if (user != null) {
+        final userId = user.uid;
+        return _firestore
+            .collection('pages')
+            .where('uid', isEqualTo: userId)
+            .snapshots()
+            .map((snapshot) {
+          return snapshot.docs.map((doc) {
+            final data = doc.data();
+            return myPage.fromJson(data); // Não converte a data
+          }).toList();
+        });
+      } else {
+        // Retorna um Stream vazio caso não haja usuário logado.
+        return Stream.value([]);
+      }
+    });
   }
 }

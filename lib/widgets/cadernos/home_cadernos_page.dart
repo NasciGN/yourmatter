@@ -1,16 +1,47 @@
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:your_matter/models/page.dart';
+import 'package:your_matter/providers/cadernos_provider.dart';
 
 class MeusCadernos extends StatefulWidget {
-  const MeusCadernos({super.key});
+  const MeusCadernos({Key? key}) : super(key: key);
 
   @override
-  State<MeusCadernos> createState() => _MeusCadernosState();
+  _MeusCadernosState createState() => _MeusCadernosState();
 }
 
 class _MeusCadernosState extends State<MeusCadernos> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final pageControl = PageControl();
+
+    return Scaffold(
+      body: StreamBuilder<List<myPage>>(
+        stream: pageControl.getPagesForCurrentUser(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Erro: ${snapshot.error}');
+          } else {
+            final notebooks = snapshot.data;
+            if (notebooks == null || notebooks.isEmpty) {
+              return Text('Nenhum caderno encontrado.');
+            }
+
+            return ListView.builder(
+              itemCount: notebooks.length,
+              itemBuilder: (context, index) {
+                final notebook = notebooks[index];
+                return ListTile(
+                  title: Text(notebook.content),
+                  // Outros campos do caderno
+                );
+              },
+            );
+          }
+        },
+      ),
+    );
   }
 }
