@@ -48,7 +48,6 @@ class _NewPageState extends State<NewPage> {
                   searchableDocument: '',
                   title: 'Title',
                   turma: 'turma',
-                  date: DateTime.now(),
                   uid: '');
               pageControl.addPageWithUserId(newNote);
             }

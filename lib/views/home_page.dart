@@ -25,12 +25,7 @@ class _HomePageState extends State<HomePage>
 
   void CreateNewNote() {
     myPage newNote = myPage(
-        content: '',
-        searchableDocument: '',
-        title: '',
-        turma: '',
-        date: DateTime.now(),
-        uid: '');
+        content: '', searchableDocument: '', title: '', turma: '', uid: '');
 
     goToNewPage(newNote, true);
   }
@@ -73,7 +68,6 @@ class _HomePageState extends State<HomePage>
                 searchableDocument: '',
                 title: '',
                 turma: '',
-                date: DateTime.now(),
                 uid: '');
             bool teste = true;
             goToNewPage(newNote, teste);

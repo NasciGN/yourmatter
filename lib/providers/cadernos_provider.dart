@@ -25,7 +25,6 @@ class PageControl {
       'content': page.content,
       'title': page.title,
       'turma': page.turma,
-      'date': page.date,
       'uid': userId, // Defina o UID com o ID do usuário logado
       'searchableDocument': page.searchableDocument,
     };
@@ -47,7 +46,6 @@ class PageControl {
         'content': page.content,
         'title': page.title,
         'turma': page.turma,
-        'date': page.date,
         'uid': userId, // Defina o UID com o ID do usuário logado
         'searchableDocument': page.searchableDocument,
       });
@@ -83,7 +81,6 @@ class PageControl {
           content: data['content'],
           title: data['title'],
           turma: data['turma'],
-          date: (data['date'] as Timestamp).toDate(),
           uid: data['uid'],
           searchableDocument: data['searchableDocument'],
         );
