@@ -284,6 +284,7 @@ packages:
     dependency: transitive
     description:
       name: material_color_utilities
+
       sha256: "0e0a020085b65b6083975e499759762399b4475f766c21668c4ecca34ea74e5a"
       url: "https://pub.dev"
     source: hosted
@@ -480,3 +481,4 @@ packages:
 sdks:
   dart: ">=3.2.0-194.0.dev <4.0.0"
   flutter: ">=3.7.0"
+

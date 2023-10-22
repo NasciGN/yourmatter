@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:your_matter/utils/constantes.dart';
 import 'package:your_matter/views/account_page.dart';
+import 'package:your_matter/views/functions/create_note.dart';
 import 'package:your_matter/views/home_page.dart';
 import 'package:your_matter/views/login_page.dart';
 import 'package:your_matter/views/logon_page.dart';
