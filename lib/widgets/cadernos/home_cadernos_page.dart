@@ -34,7 +34,7 @@ class _MeusCadernosState extends State<MeusCadernos> {
               itemBuilder: (context, index) {
                 final notebook = notebooks[index];
                 return ListTile(
-                  title: Text(notebook.title),
+                  title: Text(notebook.content),
                   // Outros campos do caderno
                 );
               },

@@ -100,17 +100,7 @@ class PageControl {
             .map((snapshot) {
           return snapshot.docs.map((doc) {
             final data = doc.data();
-            // Converter o campo 'date' de Timestamp para DateTime
-            final dateTimestamp = data['date'] as Timestamp;
-            final date = dateTimestamp.toDate();
-
-            // Criar um novo mapa com a atualização do campo 'date'
-            final updatedData = {
-              ...data,
-              'date': date,
-            };
-
-            return myPage.fromJson(updatedData);
+            return myPage.fromJson(data); // Não converte a data
           }).toList();
         });
       } else {
