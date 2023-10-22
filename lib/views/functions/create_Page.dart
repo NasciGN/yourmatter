@@ -46,7 +46,7 @@ class _NewPageState extends State<NewPage> {
               myPage newNote = myPage(
                   content: _controller.document.toPlainText(),
                   searchableDocument: '',
-                  title: 'Title',
+                  title: _titleController.text,
                   turma: 'turma',
                   uid: '');
               pageControl.addPageWithUserId(newNote);

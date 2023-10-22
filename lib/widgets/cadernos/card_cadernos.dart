@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:your_matter/utils/constantes.dart';
 
-class CardCaderno extends StatefulWidget {
-  const CardCaderno({super.key});
+class CardCaderno extends StatelessWidget {
+  final String title;
 
-  @override
-  State<CardCaderno> createState() => _CardCadernoState();
-}
-
-class _CardCadernoState extends State<CardCaderno> {
+  CardCaderno({required this.title});
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 60,
       width: 40,
-      color: Colors.red,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(defaultpd)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(defaultpd),
+        color: Colors.red,
+      ),
       padding: const EdgeInsets.all(defaultpd / 2),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [Text('Teste')],
+        children: [Text(title)],
       ),
     );
   }
