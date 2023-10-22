@@ -30,11 +30,10 @@ class _NewPageState extends State<NewPage> {
     });
   }
 
-  void addNewNote(int i) {}
-
   @override
   Widget build(BuildContext context) {
     final pageControl = PageControl();
+    final TextEditingController _titleController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -44,9 +43,14 @@ class _NewPageState extends State<NewPage> {
           ),
           onPressed: () {
             if (widget.isNewNote && !_controller.document.isEmpty()) {
-              pageControl.addPageWithUserId(widget.note);
-            } else {
-              pageControl.editPageWithUserId(widget.note);
+              myPage newNote = myPage(
+                  content: _controller.document.toPlainText(),
+                  searchableDocument: '',
+                  title: 'Title',
+                  turma: 'turma',
+                  date: DateTime.now(),
+                  uid: '');
+              pageControl.addPageWithUserId(newNote);
             }
             Get.offNamed('/home');
           },
@@ -55,6 +59,16 @@ class _NewPageState extends State<NewPage> {
         backgroundColor: Colors.transparent,
       ),
       body: Column(children: [
+        Container(
+          margin: EdgeInsets.all(32),
+          child: TextField(
+            controller: _titleController,
+            decoration: const InputDecoration(
+              hintText: 'Nome do caderno',
+              fillColor: Colors.transparent,
+            ),
+          ),
+        ),
         QuillProvider(
           configurations: QuillConfigurations(controller: _controller),
           child: QuillToolbar.basic(

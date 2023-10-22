@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class myPage {
   final String content;
   final String title;
@@ -15,7 +17,8 @@ class myPage {
       required this.uid});
 
   factory myPage.fromJson(Map<String, dynamic> json) {
-    final DateTime date = DateTime.tryParse(json['date']) ?? DateTime.now();
+    final dateTimestamp = json['date'] as Timestamp;
+    final date = dateTimestamp.toDate();
 
     return myPage(
       uid: json['uid'],
@@ -31,7 +34,7 @@ class myPage {
     return {
       'title': title,
       'turma': turma,
-      'date': date.toIso8601String(),
+      'date': Timestamp.fromDate(date),
       'uid': uid,
       'content': content,
       'searchableDocument': searchableDocument,

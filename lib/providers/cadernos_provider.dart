@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:rxdart/rxdart.dart';
 import '../models/page.dart';
 
 class PageControl {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // Obter o ID do usuário logado no Firebase
   Future<String?> getUserId() async {
@@ -19,16 +21,16 @@ class PageControl {
   // Adicionar uma nova página com o ID do usuário logado
   Future<void> addPageWithUserId(myPage page) async {
     final userId = await getUserId();
+    final PageData = {
+      'content': page.content,
+      'title': page.title,
+      'turma': page.turma,
+      'date': page.date,
+      'uid': userId, // Defina o UID com o ID do usuário logado
+      'searchableDocument': page.searchableDocument,
+    };
     if (userId != null) {
-      final collection = FirebaseFirestore.instance.collection('pages');
-      await collection.doc(userId).set({
-        'content': page.content,
-        'title': page.title,
-        'turma': page.turma,
-        'date': page.date,
-        'uid': userId, // Defina o UID com o ID do usuário logado
-        'searchableDocument': page.searchableDocument,
-      });
+      await FirebaseFirestore.instance.collection('pages').add(PageData);
     } else {
       if (kDebugMode) {
         print("Nenhum usuário autenticado.");
@@ -88,5 +90,36 @@ class PageControl {
       }
     }
     return null;
+  }
+
+  Stream<List<myPage>> getPagesForCurrentUser() {
+    return _auth.authStateChanges().switchMap((user) {
+      if (user != null) {
+        final userId = user.uid;
+        return _firestore
+            .collection('pages')
+            .where('uid', isEqualTo: userId)
+            .snapshots()
+            .map((snapshot) {
+          return snapshot.docs.map((doc) {
+            final data = doc.data();
+            // Converter o campo 'date' de Timestamp para DateTime
+            final dateTimestamp = data['date'] as Timestamp;
+            final date = dateTimestamp.toDate();
+
+            // Criar um novo mapa com a atualização do campo 'date'
+            final updatedData = {
+              ...data,
+              'date': date,
+            };
+
+            return myPage.fromJson(updatedData);
+          }).toList();
+        });
+      } else {
+        // Retorna um Stream vazio caso não haja usuário logado.
+        return Stream.value([]);
+      }
+    });
   }
 }
