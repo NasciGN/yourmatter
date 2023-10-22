@@ -1,7 +1,7 @@
 class Note {
   final String document;
-  final String title;
-  final String turma;
+  late final String title;
+  late final String turma;
   final DateTime date;
   final String uid;
   final String

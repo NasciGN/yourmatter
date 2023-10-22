@@ -2,8 +2,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
-import 'package:flutter/material.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final db = FirebaseFirestore.instance;
@@ -44,33 +42,6 @@ Future<void> updateUser(nome, email) async {
     print('Erro ao atualizar os dados: $e');
   }
 }
-/* Future<void> createUser(context, name, email, pass, isprofessor) async {
-  try {
-    final credential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: email,
-      password: pass,
-    );
-    String userId = credential.user?.uid ?? '';
-    saveUserRegister(userId, name, email, isprofessor);
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      AnimatedSnackBar.material(
-        'Senha muito pequena...',
-        type: AnimatedSnackBarType.error,
-        desktopSnackBarPosition: DesktopSnackBarPosition.topCenter,
-      ).show(context);
-    } else if (e.code == 'email-already-in-use') {
-      AnimatedSnackBar.material(
-        'Esse email ja está cadastrado...',
-        type: AnimatedSnackBarType.error,
-        desktopSnackBarPosition: DesktopSnackBarPosition.topCenter,
-      ).show(context);
-    }
-  } catch (e) {
-    print(e);
-  }
-} */
 
 Future<void> getUserData(context, userid) async {
   try {

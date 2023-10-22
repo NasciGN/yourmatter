@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:your_matter/resources/account_menu.dart';
 import 'package:your_matter/resources/auth.dart';
 import 'package:your_matter/utils/constantes.dart';
