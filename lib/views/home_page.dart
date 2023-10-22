@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_matter/models/page.dart';
 import 'package:your_matter/resources/auth.dart';
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage>
   late TabController _tabController;
 
   void CreateNewNote() {
-    Note newNote = Note(
+    Page newNote = Page(
         document: '',
         searchableDocument: '',
         title: '',
@@ -36,7 +35,7 @@ class _HomePageState extends State<HomePage>
     goToNewPage(newNote, true);
   }
 
-  void goToNewPage(Note note, bool isNewNote) {
+  void goToNewPage(Page note, bool isNewNote) {
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -69,7 +68,7 @@ class _HomePageState extends State<HomePage>
         padding: const EdgeInsets.only(right: 15, bottom: 15),
         child: FloatingActionButton(
           onPressed: () {
-            Note newNote = Note(
+            Page newNote = Page(
                 document: '',
                 searchableDocument: '',
                 title: '',

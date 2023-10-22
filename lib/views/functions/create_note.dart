@@ -88,7 +88,7 @@ class _EditNotePageState extends State<EditNotePage> {
                         documentController.text.isNotEmpty) {
                       final pageController = FirebaseService();
 
-                      Note note = Note(
+                      Page note = Page(
                           document: documentController.text,
                           searchableDocument: titleController.text,
                           title: titleController.text,

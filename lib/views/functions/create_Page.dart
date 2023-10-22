@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:your_matter/models/page.dart';
 
 class NewPage extends StatefulWidget {
-  Note note;
+  Page note;
   bool isNewNote;
   NewPage({super.key, required this.note, required this.isNewNote});
 
@@ -41,7 +41,9 @@ class _NewPageState extends State<NewPage> {
             color: Colors.black,
           ),
           onPressed: () {
-            if (widget.isNewNote && !_controller.document.isEmpty()) {}
+            if (widget.isNewNote && !_controller.document.isEmpty()) {
+              //addNewNote();
+            }
             Get.offNamed('/home');
           },
         ),
