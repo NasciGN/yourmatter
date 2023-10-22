@@ -1,26 +1,39 @@
-class Note {
-  final String document;
+class Page {
+  final String content;
   final String title;
   final String turma;
   final DateTime date;
   final String uid;
   final String
       searchableDocument; //This was originally created to allow search function
-  Note(
-      {required this.document,
+  Page(
+      {required this.content,
       required this.searchableDocument,
       required this.title,
       required this.turma,
       required this.date,
       required this.uid});
 
+  factory Page.fromJson(Map<String, dynamic> json) {
+    final DateTime date = DateTime.tryParse(json['date']) ?? DateTime.now();
+
+    return Page(
+      uid: json['uid'],
+      title: json['title'],
+      content: json['content'],
+      turma: json['turma'],
+      date: date,
+      searchableDocument: json['searchableDocument'],
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'title': title,
       'turma': turma,
-      'date': date,
+      'date': date.toIso8601String(),
       'uid': uid,
-      'document': document,
+      'content': content,
       'searchableDocument': searchableDocument,
     };
   }

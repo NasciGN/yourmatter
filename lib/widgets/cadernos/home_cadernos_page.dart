@@ -13,13 +13,6 @@ class MeusCadernos extends StatefulWidget {
 class _MeusCadernosState extends State<MeusCadernos> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.all(defaultpd),
-        child: Scaffold(
-          body: Consumer(builder: (context, ref, child) {
-            final conststreamProv = ref.watch(cadernoProvider);
-            return const CardCaderno();
-          }),
-        ));
+    return Padding(padding: EdgeInsets.all(defaultpd), child: Scaffold( ));
   }
 }
