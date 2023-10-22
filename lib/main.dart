@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:your_matter/models/page.dart';
 import 'package:your_matter/views/account_page.dart';
 import 'package:your_matter/views/functions/create_note.dart';
 import 'package:your_matter/views/home_page.dart';
@@ -28,7 +27,6 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/login', page: () => const LoginPage()),
         GetPage(name: '/logon', page: () => const LogonPage()),
         GetPage(name: '/account', page: () => const AccountPage()),
-        GetPage(name: '/newNote', page: () =>  EditNotePage(), arguments: ),
       ],
       builder: EasyLoading.init(), // Inicialize o EasyLoading aqui
       theme: ThemeData(
