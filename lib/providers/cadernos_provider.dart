@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import '../models/page.dart';
 
-class PageController {
+class PageControl {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Obter o ID do usuário logado no Firebase
@@ -17,7 +17,7 @@ class PageController {
   }
 
   // Adicionar uma nova página com o ID do usuário logado
-  Future<void> addPageWithUserId(Page page) async {
+  Future<void> addPageWithUserId(myPage page) async {
     final userId = await getUserId();
     if (userId != null) {
       final collection = FirebaseFirestore.instance.collection('pages');
@@ -37,7 +37,7 @@ class PageController {
   }
 
   // Editar uma página existente com o ID do usuário logado
-  Future<void> editPageWithUserId(Page page) async {
+  Future<void> editPageWithUserId(myPage page) async {
     final userId = await getUserId();
     if (userId != null) {
       final collection = FirebaseFirestore.instance.collection('pages');
@@ -70,14 +70,14 @@ class PageController {
   }
 
   // Buscar página por ID de usuário
-  Future<Page?> getPageByUserId() async {
+  Future<myPage?> getPageByUserId() async {
     final userId = await getUserId();
     if (userId != null) {
       final collection = FirebaseFirestore.instance.collection('pages');
       final doc = await collection.doc(userId).get();
       if (doc.exists) {
         final data = doc.data() as Map<String, dynamic>;
-        return Page(
+        return myPage(
           content: data['content'],
           title: data['title'],
           turma: data['turma'],

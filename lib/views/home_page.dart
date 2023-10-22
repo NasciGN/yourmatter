@@ -24,8 +24,8 @@ class _HomePageState extends State<HomePage>
   late TabController _tabController;
 
   void CreateNewNote() {
-    Page newNote = Page(
-        document: '',
+    myPage newNote = myPage(
+        content: '',
         searchableDocument: '',
         title: '',
         turma: '',
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage>
     goToNewPage(newNote, true);
   }
 
-  void goToNewPage(Page note, bool isNewNote) {
+  void goToNewPage(myPage note, bool isNewNote) {
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -68,8 +68,8 @@ class _HomePageState extends State<HomePage>
         padding: const EdgeInsets.only(right: 15, bottom: 15),
         child: FloatingActionButton(
           onPressed: () {
-            Page newNote = Page(
-                document: '',
+            myPage newNote = myPage(
+                content: '',
                 searchableDocument: '',
                 title: '',
                 turma: '',

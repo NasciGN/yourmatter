@@ -1,4 +1,4 @@
-class Page {
+class myPage {
   final String content;
   final String title;
   final String turma;
@@ -6,7 +6,7 @@ class Page {
   final String uid;
   final String
       searchableDocument; //This was originally created to allow search function
-  Page(
+  myPage(
       {required this.content,
       required this.searchableDocument,
       required this.title,
@@ -14,10 +14,10 @@ class Page {
       required this.date,
       required this.uid});
 
-  factory Page.fromJson(Map<String, dynamic> json) {
+  factory myPage.fromJson(Map<String, dynamic> json) {
     final DateTime date = DateTime.tryParse(json['date']) ?? DateTime.now();
 
-    return Page(
+    return myPage(
       uid: json['uid'],
       title: json['title'],
       content: json['content'],

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/models/page.dart';
+import 'package:your_matter/providers/cadernos_provider.dart';
 
 class NewPage extends StatefulWidget {
-  Page note;
+  myPage note;
   bool isNewNote;
   NewPage({super.key, required this.note, required this.isNewNote});
 
@@ -33,6 +34,7 @@ class _NewPageState extends State<NewPage> {
 
   @override
   Widget build(BuildContext context) {
+    final pageControl = PageControl();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -42,7 +44,9 @@ class _NewPageState extends State<NewPage> {
           ),
           onPressed: () {
             if (widget.isNewNote && !_controller.document.isEmpty()) {
-              //addNewNote();
+              pageControl.addPageWithUserId(widget.note);
+            } else {
+              pageControl.editPageWithUserId(widget.note);
             }
             Get.offNamed('/home');
           },
