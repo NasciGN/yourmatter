@@ -38,6 +38,7 @@ class _LogonFormState extends State<LogonForm> {
   }
 
   bool _isObscure = true;
+
   // ignore: unused_field
   bool _isLoading = false;
   bool? _isProfessor = false;
@@ -51,13 +52,13 @@ class _LogonFormState extends State<LogonForm> {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: defaultpd, bottom: defaultpd * 2),
+              padding: EdgeInsets.only(top: borderform, bottom: borderform * 2),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Cadastre-se",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: bgColor,
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
@@ -65,25 +66,39 @@ class _LogonFormState extends State<LogonForm> {
             ),
             SizedBox(
               child: Column(children: [
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Digite seu nome',
+                      style: TextStyle(
+                          color: Color.fromRGBO(26, 76, 97, 1),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Sansation',
+                          fontSize: 16),
+                    )),
+                SizedBox(
+                  height: 12,
+                ),
                 TextFormField(
                   controller: _controllerNome,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
-                    labelText: 'Digite seu nome',
-                    labelStyle:
-                        const TextStyle(color: Colors.white), // Cor do rótulo
+                    labelText: 'Nome',
+                    labelStyle: const TextStyle(color: bgColor),
+                    filled: true,
+                    fillColor: bgform,
                     border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(color: bgColor),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          color:
-                              Colors.white), // Cor da borda quando selecionado
-                      borderRadius: BorderRadius.circular(defaultpd),
+                          color: bgColor), // Cor da borda quando selecionado
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                   ),
-                  style: const TextStyle(color: Colors.white), // Cor do texto
+                  style: const TextStyle(color: bgColor),
+                  // Cor do texto
                   validator: (value) {
                     // Use uma expressão regular para verificar se o valor contém apenas letras e espaços.
                     // ^[A-Za-z ]+$ significa que aceitaremos apenas letras maiúsculas, minúsculas e espaços.
@@ -97,25 +112,41 @@ class _LogonFormState extends State<LogonForm> {
                 const SizedBox(
                   height: 20,
                 ),
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Digite seu e-mail',
+                      style: TextStyle(
+                          color: Color.fromRGBO(26, 76, 97, 1),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Sansation',
+                          fontSize: 16),
+                    )),
+                SizedBox(
+                  height: 12,
+                ),
                 TextFormField(
                   controller: _controllerEmail,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
-                    labelText: 'Digite seu e-mail',
-                    labelStyle:
-                        const TextStyle(color: Colors.white), // Cor do rótulo
+                    labelText: 'E-mail',
+                    labelStyle: const TextStyle(color: bgColor),
+                    filled: true,
+                    fillColor: bgform,
+                    // Cor do rótulo
                     border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(color: bgColor),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           color:
                               Colors.white), // Cor da borda quando selecionado
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                   ),
-                  style: const TextStyle(color: Colors.white), // Cor do texto
+                  style: const TextStyle(color: bgColor),
+                  // Cor do texto
                   validator: MultiValidator([
                     RequiredValidator(errorText: 'Esse campo é obrigatório!'),
                     EmailValidator(errorText: 'Email Inválido!')
@@ -124,21 +155,36 @@ class _LogonFormState extends State<LogonForm> {
                 const SizedBox(
                   height: 20,
                 ),
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Digite sua senha',
+                      style: TextStyle(
+                          color: Color.fromRGBO(26, 76, 97, 1),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Sansation',
+                          fontSize: 16),
+                    )),
+                SizedBox(
+                  height: 12,
+                ),
                 TextFormField(
                   obscureText: _isObscure,
                   controller: _controllerPassword1,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: bgColor),
                   decoration: InputDecoration(
-                    labelText: 'Digite sua senha',
-                    labelStyle: const TextStyle(color: Colors.white),
+                    labelText: 'Senha',
+                    labelStyle: const TextStyle(color: bgColor),
+                    filled: true,
+                    fillColor: bgform,
                     border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(color: bgColor),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(color: bgColor),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -150,7 +196,7 @@ class _LogonFormState extends State<LogonForm> {
                         _isObscure
                             ? Icons.remove_red_eye
                             : Icons.remove_red_eye_outlined,
-                        color: Colors.white,
+                        color: bgColor,
                       ),
                     ),
                   ),
@@ -166,21 +212,36 @@ class _LogonFormState extends State<LogonForm> {
                 const SizedBox(
                   height: 20,
                 ),
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Confirme sua senha',
+                      style: TextStyle(
+                          color: Color.fromRGBO(26, 76, 97, 1),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Sansation',
+                          fontSize: 16),
+                    )),
+                SizedBox(
+                  height: 12,
+                ),
                 TextFormField(
                   obscureText: _isObscure,
                   controller: _controllerPassword2,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: bgColor),
                   decoration: InputDecoration(
-                    labelText: 'Confirme sua senha',
-                    labelStyle: const TextStyle(color: Colors.white),
+                    labelText: 'Senha',
+                    labelStyle: const TextStyle(color: bgColor),
+                    filled: true,
+                    fillColor: bgform,
                     border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(color: bgColor),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(color: bgColor),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -192,7 +253,7 @@ class _LogonFormState extends State<LogonForm> {
                         _isObscure
                             ? Icons.remove_red_eye
                             : Icons.remove_red_eye_outlined,
-                        color: Colors.white,
+                        color: bgColor,
                       ),
                     ),
                   ),
@@ -213,8 +274,8 @@ class _LogonFormState extends State<LogonForm> {
                       children: [
                         Theme(
                           data: ThemeData(
-                            unselectedWidgetColor: Colors
-                                .white, // Define a cor do Checkbox não selecionado
+                            unselectedWidgetColor:
+                                bgColor, // Define a cor do Checkbox não selecionado
                           ),
                           child: Checkbox(
                             value: _isProfessor ?? false,
@@ -226,17 +287,11 @@ class _LogonFormState extends State<LogonForm> {
                           ),
                         ),
                         const Text(
-                          'Professor',
-                          style: TextStyle(color: Colors.white),
+                          'É Professor',
+                          style: TextStyle(color: bgColor),
                         )
                       ],
                     ),
-                    TextButton(
-                        onPressed: () async {},
-                        child: const Text(
-                          'Esqueceu a senha?',
-                          style: TextStyle(color: Colors.white),
-                        )),
                   ],
                 ),
                 SizedBox(
@@ -265,13 +320,14 @@ class _LogonFormState extends State<LogonForm> {
                     height: 60,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                        color: scdColor,
+                        color: bgColor,
                         borderRadius:
-                            BorderRadius.all(Radius.circular(defaultpd))),
+                            BorderRadius.all(Radius.circular(borderform))),
                     child: const Text(
                       'Criar Conta',
                       style: TextStyle(
                           color: Colors.white,
+                          fontFamily: 'Sansation',
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                     ),
@@ -284,7 +340,10 @@ class _LogonFormState extends State<LogonForm> {
             ),
             const Text(
               "Já possui uma conta? ",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: bgColor,
+                fontFamily: 'Sansation',
+              ),
             ),
             GestureDetector(
               onTap: () {
