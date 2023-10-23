@@ -25,7 +25,12 @@ class _HomePageState extends State<HomePage>
 
   void CreateNewNote() {
     myPage newNote = myPage(
-        content: '', searchableDocument: '', title: '', turma: '', uid: '');
+        id: '',
+        content: '',
+        searchableDocument: '',
+        title: '',
+        turma: '',
+        uid: '');
 
     goToNewPage(newNote, true);
   }
@@ -64,6 +69,7 @@ class _HomePageState extends State<HomePage>
         child: FloatingActionButton(
           onPressed: () {
             myPage newNote = myPage(
+                id: '',
                 content: '',
                 searchableDocument: '',
                 title: '',
@@ -72,7 +78,7 @@ class _HomePageState extends State<HomePage>
             bool teste = true;
             goToNewPage(newNote, teste);
           },
-          backgroundColor: bgColor,
+          backgroundColor: btnColor,
           child: const Icon(
             Icons.add_outlined,
             color: Colors.white,
@@ -86,13 +92,14 @@ class _HomePageState extends State<HomePage>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Olá, ',
-                  style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
+                Text(
+                  'Olá, $onlineUserName',
+                  style: const TextStyle(
+                      fontSize: 26.0, fontWeight: FontWeight.bold),
                 ),
                 GestureDetector(
                   child: const CircleAvatar(
-                    backgroundColor: bgColor,
+                    backgroundColor: btnColor,
                     child: Icon(
                       Icons.account_circle,
                       color: Colors.white,

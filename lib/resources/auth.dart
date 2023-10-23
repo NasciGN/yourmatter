@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 final db = FirebaseFirestore.instance;
 FirebaseAuth auth = FirebaseAuth.instance;
@@ -154,5 +155,16 @@ Future<void> loginUser(context, email, pass) async {
   } catch (e) {
     //print('Error occurred: $e');
     throw Exception('Error occurred: $e');
+  }
+}
+
+Future<void> recoveryPass(String email) async {
+  try {
+    FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    EasyLoading.instance.toastPosition = EasyLoadingToastPosition.bottom;
+    EasyLoading.showToast('Email de recuperação enviado!');
+  } catch (e) {
+    EasyLoading.showToast('Erro ao enviar email de recuperação.');
+    // Error
   }
 }
