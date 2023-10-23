@@ -61,7 +61,7 @@ class PageControl {
     }
   }
 
-  Future<void> deletePageByTitle(myPage page) async {
+  Future<void> deletePageById(myPage page) async {
     final userId = await getUserId();
     if (userId != null) {
       final query = FirebaseFirestore.instance

@@ -75,8 +75,7 @@ class _MeusCadernosState extends State<MeusCadernos> {
                               onPressed: () async {
                                 Navigator.pop(context);
                                 try {
-                                  await pageControl
-                                      .deletePageByTitle(notebook.title);
+                                  await pageControl.deletePageById(notebook);
                                 } catch (e) {
                                   print('Erro ao tentar excluir caderno: ($e)');
                                 }
