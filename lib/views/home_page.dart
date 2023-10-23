@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage>
   String displayName = 'Nome';
   String onlineUserName = '';
   late User onlineUser;
-  bool? _isprofessor;
   late TabController _tabController;
 
   void CreateNewNote() {
@@ -45,6 +44,14 @@ class _HomePageState extends State<HomePage>
                 )));
   }
 
+  String limitarComReticencias(String texto, {int limite = 25}) {
+    if (texto.length <= limite) {
+      return texto;
+    } else {
+      return '${texto.substring(0, limite - 3)}...';
+    }
+  }
+
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this, initialIndex: 0);
@@ -52,10 +59,8 @@ class _HomePageState extends State<HomePage>
     FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user != null) {
         onlineUser = user;
-        onlineUserName = user.displayName ?? '';
-        bool? isProfessor = await isUserProfessor(onlineUser.uid);
         setState(() {
-          _isprofessor = isProfessor;
+          onlineUserName = user.displayName ?? '';
         });
       }
     });
@@ -91,28 +96,47 @@ class _HomePageState extends State<HomePage>
           color: bgform,
           child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Olá, $onlineUserName',
-                    style: const TextStyle(
-                        fontSize: 26.0,
-                        fontWeight: FontWeight.bold,
-                        color: bgColor),
-                  ),
-                  GestureDetector(
-                    child: const CircleAvatar(
-                      backgroundColor: btnColor,
-                      child: Icon(
-                        Icons.account_circle,
-                        color: Colors.white,
+                  Row(
+                    children: [
+                      GestureDetector(
+                        child: const CircleAvatar(
+                          backgroundColor: btnColor,
+                          child: Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/account');
+                        },
                       ),
-                    ),
-                    onTap: () {
-                      Navigator.of(context).pushNamed('/account');
-                    },
-                  )
+                      Spacer(),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.more_vert,
+                            color: bgColor,
+                          ))
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Olá, ${limitarComReticencias(onlineUserName)}',
+                        style: const TextStyle(
+                            fontSize: 26.0,
+                            fontWeight: FontWeight.bold,
+                            color: bgColor),
+                      ),
+                    ],
+                  ),
                 ],
               )),
         ),
