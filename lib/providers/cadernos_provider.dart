@@ -43,17 +43,24 @@ class PageControl {
   Future<void> editPageWithUserId(myPage page) async {
     final userId = await getUserId();
     if (userId != null) {
-      await FirebaseFirestore.instance
+      final document = await FirebaseFirestore.instance
           .collection('pages')
-          .where('id', isEqualTo: page.id);
-      ({
-        'id': page.id,
-        'content': page.content,
-        'title': page.title,
-        'turma': page.turma,
-        'uid': userId, // Defina o UID com o ID do usuário logado
-        'searchableDocument': page.searchableDocument,
-      });
+          .where('id', isEqualTo: page.id)
+          .get()
+          .then((snapshot) => snapshot.docs.first);
+
+      if (document != null) {
+        FirebaseFirestore.instance.collection('pages').doc(document.id).set({
+          'id': page.id,
+          'content': page.content,
+          'title': page.title,
+          'turma': page.turma,
+          'uid': userId,
+          'searchableDocument': page.searchableDocument,
+        });
+      } else {
+        print('Documento não encontrado.');
+      }
     } else {
       if (kDebugMode) {
         print("Nenhum usuário autenticado.");

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/models/page.dart';
 import 'package:your_matter/providers/cadernos_provider.dart';
@@ -94,16 +93,13 @@ class _MeusCadernosState extends State<MeusCadernos> {
                         NewPage(
                           note: myPage(
                             id: notebook.id,
-                            content: notebook
-                                .content, // Preencha com o conteúdo existente
-                            searchableDocument: notebook
-                                .searchableDocument, // Preencha com o documento existente
-                            title: notebook
-                                .title, // Preencha com o título existente
+                            content: notebook.content,
+                            searchableDocument: notebook.searchableDocument,
+                            title: notebook.title,
                             turma: notebook.turma,
                             uid: notebook.uid,
                           ),
-                          isNewNote: false, // Defina conforme necessário
+                          isNewNote: false,
                         ),
                       );
                     },

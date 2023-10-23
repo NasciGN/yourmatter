@@ -12,7 +12,7 @@ class CardCaderno extends StatelessWidget {
       width: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultpd),
-        color: Colors.purple,
+        color: const Color.fromARGB(255, 213, 137, 226),
       ),
       padding: const EdgeInsets.all(defaultpd / 2),
       child: Column(
