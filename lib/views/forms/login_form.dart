@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../resources/auth.dart';
 import '../../utils/constantes.dart';
@@ -18,8 +16,8 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerPassword = TextEditingController();
 
   @override
   void initState() {
@@ -153,7 +151,9 @@ class _LoginFormState extends State<LoginForm> {
                       ],
                     ),
                     TextButton(
-                        onPressed: () async {},
+                        onPressed: () async {
+                          Get.offNamed('/recoveryPass');
+                        },
                         child: const Text(
                           'Esqueceu a senha?',
                           style: TextStyle(color: Colors.white),
@@ -197,27 +197,20 @@ class _LoginFormState extends State<LoginForm> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Não possui uma conta?  ",
-                  style: TextStyle(color: Colors.white),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LogonPage()));
-                  },
-                  child: const Text(
-                    "Crie uma conta grátis aqui",
-                    style:
-                        TextStyle(color: scdColor, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
+            const Text(
+              "Não possui uma conta?  ",
+              style: TextStyle(color: Colors.white),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LogonPage()));
+              },
+              child: const Text(
+                "Crie uma conta grátis aqui",
+                style: TextStyle(
+                    color: scdColor, fontWeight: FontWeight.bold, fontSize: 14),
+              ),
             )
           ],
         ));

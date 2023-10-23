@@ -50,7 +50,7 @@ class _NewPageState extends State<NewPage> {
                   turma: 'turma',
                   uid: '');
               pageControl.addPageWithUserId(newNote);
-            }
+            } else {}
             Get.offNamed('/home');
           },
         ),

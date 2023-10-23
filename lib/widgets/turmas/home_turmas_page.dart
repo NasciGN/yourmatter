@@ -13,7 +13,7 @@ class _MinhasTurmasState extends State<MinhasTurmas> {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.all(defaultpd),
-      child: Text('Turmas'),
+      child: Center(child: Text('Em breve')),
     );
   }
 }

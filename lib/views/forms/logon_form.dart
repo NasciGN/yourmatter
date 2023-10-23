@@ -64,7 +64,6 @@ class _LogonFormState extends State<LogonForm> {
               ),
             ),
             SizedBox(
-              height: size.height * .45,
               child: Column(children: [
                 TextFormField(
                   controller: _controllerNome,
@@ -205,7 +204,7 @@ class _LogonFormState extends State<LogonForm> {
                   },
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -227,7 +226,7 @@ class _LogonFormState extends State<LogonForm> {
                           ),
                         ),
                         const Text(
-                          'Conta para professor',
+                          'Professor',
                           style: TextStyle(color: Colors.white),
                         )
                       ],
@@ -240,7 +239,9 @@ class _LogonFormState extends State<LogonForm> {
                         )),
                   ],
                 ),
-                const Spacer(),
+                SizedBox(
+                  height: 20,
+                ),
                 GestureDetector(
                   onTap: () async {
                     if (_formKey.currentState!.validate()) {
@@ -281,27 +282,19 @@ class _LogonFormState extends State<LogonForm> {
             const SizedBox(
               height: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  "Já possui uma conta? ",
-                  style: TextStyle(color: Colors.white),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
-                  },
-                  child: const Text(
-                    "Entre com ela por aqui",
-                    style:
-                        TextStyle(color: scdColor, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
+            const Text(
+              "Já possui uma conta? ",
+              style: TextStyle(color: Colors.white),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
+              },
+              child: const Text(
+                "Entre com ela por aqui",
+                style: TextStyle(color: scdColor, fontWeight: FontWeight.bold),
+              ),
             )
           ],
         ));

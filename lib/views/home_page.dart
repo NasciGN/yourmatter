@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Olá, **',
+                  'Olá, ',
                   style: TextStyle(fontSize: 26.0, fontWeight: FontWeight.bold),
                 ),
                 GestureDetector(
