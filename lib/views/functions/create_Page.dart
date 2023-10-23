@@ -7,7 +7,9 @@ import 'package:your_matter/providers/cadernos_provider.dart';
 class NewPage extends StatefulWidget {
   myPage note;
   bool isNewNote;
-  NewPage({super.key, required this.note, required this.isNewNote});
+  String? documentId;
+
+  NewPage({super.key, required this.note, required this.isNewNote, this.documentId});
 
   @override
   State<NewPage> createState() => _NewPageState();
@@ -16,6 +18,7 @@ class NewPage extends StatefulWidget {
 class _NewPageState extends State<NewPage> {
   QuillController _controller = QuillController.basic();
   final TextEditingController _titleController = TextEditingController();
+  final pageControl = PageControl();
 
   @override
   void initState() {
@@ -38,7 +41,6 @@ class _NewPageState extends State<NewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final pageControl = PageControl();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -55,7 +57,17 @@ class _NewPageState extends State<NewPage> {
                   turma: 'turma',
                   uid: '');
               pageControl.addPageWithUserId(newNote);
-            } else {}
+              print(widget.documentId);
+            } else {
+              myPage newNote = myPage(
+                  content: _controller.document.toPlainText(),
+                  searchableDocument: '',
+                  title: _titleController.text,
+                  turma: 'turma',
+                  uid: '');
+                pageControl.updatePage(newNote);
+
+            }
             Get.offNamed('/home');
           },
         ),

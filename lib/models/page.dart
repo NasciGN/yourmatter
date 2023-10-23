@@ -3,14 +3,15 @@ class myPage {
   final String title;
   final String turma;
   final String uid;
-  final String
-      searchableDocument; //This was originally created to allow search function
-  myPage(
-      {required this.content,
-      required this.searchableDocument,
-      required this.title,
-      required this.turma,
-      required this.uid});
+  final String searchableDocument;
+
+  myPage({
+    required this.content,
+    required this.searchableDocument,
+    required this.title,
+    required this.turma,
+    required this.uid,
+  });
 
   factory myPage.fromJson(Map<String, dynamic> json) {
     return myPage(

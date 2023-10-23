@@ -29,7 +29,42 @@ class PageControl {
       'searchableDocument': page.searchableDocument,
     };
     if (userId != null) {
-      await FirebaseFirestore.instance.collection('pages').add(PageData);
+      if (userId != null) {
+        final documentReference = await FirebaseFirestore.instance.collection(
+            'pages').add(PageData);
+        // Obtém o ID do documento recém-criado
+        final documentId = documentReference.id;
+
+        // Agora você pode salvar o documentId no objeto da página
+        page.documentId = documentId;
+      } else {
+        if (kDebugMode) {
+          print("Nenhum usuário autenticado.");
+        }
+      }
+    }
+  }
+
+  Future<void> updatePage(myPage page) async {
+    final userId = await getUserId();
+    final documentId = page.id;
+    if (userId != null) {
+      final collection = FirebaseFirestore.instance.collection('pages');
+
+      if (page.documentId != null) {
+        // Use o ID do documento fornecido para atualizar a página
+        await collection.doc(page.documentId).update({
+          'content': page.content,
+          'title': page.title,
+          'turma': page.turma,
+          'uid': userId,
+          'searchableDocument': page.searchableDocument,
+        });
+      } else {
+        if (kDebugMode) {
+          print("documentId não fornecido na página.");
+        }
+      }
     } else {
       if (kDebugMode) {
         print("Nenhum usuário autenticado.");
@@ -37,24 +72,6 @@ class PageControl {
     }
   }
 
-  // Editar uma página existente com o ID do usuário logado
-  Future<void> editPageWithUserId(myPage page) async {
-    final userId = await getUserId();
-    if (userId != null) {
-      final collection = FirebaseFirestore.instance.collection('pages');
-      await collection.doc(userId).update({
-        'content': page.content,
-        'title': page.title,
-        'turma': page.turma,
-        'uid': userId, // Defina o UID com o ID do usuário logado
-        'searchableDocument': page.searchableDocument,
-      });
-    } else {
-      if (kDebugMode) {
-        print("Nenhum usuário autenticado.");
-      }
-    }
-  }
 
   // Deletar uma página com o ID do usuário logado
   Future<void> deletePageWithUserId() async {
@@ -108,5 +125,17 @@ class PageControl {
         return Stream.value([]);
       }
     });
+  }
+
+  Future<String?> getExistingContentFromDocument(String? documentId) async {
+    final collection = FirebaseFirestore.instance.collection('pages');
+    final doc = await collection.doc(documentId).get();
+    if (doc.exists) {
+      final data = doc.data();
+      return data?['content'] as String;
+      print(documentId);
+    }
+    print(documentId);
+    return null;
   }
 }
