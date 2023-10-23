@@ -66,7 +66,7 @@ class _AccountPageState extends State<AccountPage> {
               child: const Text(
                 'Minha Conta',
                 style: TextStyle(
-                    color: bgColor, fontSize: 30, fontWeight: FontWeight.bold),
+                    color: Color.fromARGB(255, 18, 51, 65), fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
             Container(

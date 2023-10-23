@@ -25,12 +25,13 @@ class _LoginPageState extends State<LoginPage> {
             child: const Column(
               children: [
                 SizedBox(
-                  height: defaultpd * 2,
+                  height: defaultpd * 3,
                 ),
                 Text(
                   "Bem vindo ao",
                   style: TextStyle(
-                      color: bgColor,
+                      fontFamily: 'Sansation',
+                      color: Color.fromRGBO(26, 76, 97, 1),
                       fontWeight: FontWeight.bold,
                       letterSpacing: 5,
                       fontSize: 30),
@@ -38,7 +39,8 @@ class _LoginPageState extends State<LoginPage> {
                 Text(
                   "YourMatter",
                   style: TextStyle(
-                      color: bgColor,
+                      fontFamily: 'Bridht Melody',
+                      color: Color.fromRGBO(26, 76, 97, 1),
                       fontWeight: FontWeight.bold,
                       fontSize: 50),
                 )
@@ -47,14 +49,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Container(
             padding: const EdgeInsets.only(
-              right: defaultpd * 3,
-              left: defaultpd * 3,
-              top: defaultpd * 3,
+              right: defaultpd * 2,
+              left: defaultpd * 2,
+              top: defaultpd * 2,
             ),
             margin: EdgeInsets.only(top: size.height * 0.3),
             height: size.height * 0.7,
             decoration: const BoxDecoration(
-                color: bgColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(defaultpd * 4),
                 )),

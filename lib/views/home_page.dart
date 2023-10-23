@@ -87,30 +87,33 @@ class _HomePageState extends State<HomePage>
       ),
       body: SafeArea(
           child: Column(children: [
-        Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Olá, $onlineUserName',
-                  style: const TextStyle(
-                      fontSize: 26.0, fontWeight: FontWeight.bold),
-                ),
-                GestureDetector(
-                  child: const CircleAvatar(
-                    backgroundColor: btnColor,
-                    child: Icon(
-                      Icons.account_circle,
-                      color: Colors.white,
-                    ),
+        Container(
+          color: bgform,
+          child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Olá, $onlineUserName',
+                    style: const TextStyle(
+                        fontSize: 26.0, fontWeight: FontWeight.bold),
                   ),
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/account');
-                  },
-                )
-              ],
-            )),
+                  GestureDetector(
+                    child: const CircleAvatar(
+                      backgroundColor: btnColor,
+                      child: Icon(
+                        Icons.account_circle,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/account');
+                    },
+                  )
+                ],
+              )),
+        ),
         Padding(
           padding: const EdgeInsets.all(defaultpd),
           child: TabBar(

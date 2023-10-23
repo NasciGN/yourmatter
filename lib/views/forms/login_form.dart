@@ -32,6 +32,7 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   bool _isObscure = true;
+
   // ignore: unused_field
   bool _isLoading = false;
   bool? _rememberPassword = false;
@@ -45,13 +46,13 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: defaultpd, bottom: defaultpd * 2),
+              padding: EdgeInsets.only(top: 10, bottom: defaultpd * 2),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Acesse",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Color.fromRGBO(26, 76, 97, 1),
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
@@ -60,25 +61,45 @@ class _LoginFormState extends State<LoginForm> {
             SizedBox(
               height: size.height * .45,
               child: Column(children: [
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Digite seu e-mail',
+                      style: TextStyle(
+                          color: Color.fromRGBO(26, 76, 97, 1),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Sansation',
+                          fontSize: 16),
+                    )),
+                SizedBox(
+                  height: 12,
+                ),
                 TextFormField(
                   controller: _controllerEmail,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
-                    labelText: 'Digite seu e-mail',
+                    labelText: 'E-mail',
                     labelStyle:
-                        const TextStyle(color: Colors.white), // Cor do rótulo
+                        const TextStyle(color: Color.fromARGB(255, 18, 51, 65)),
+                    filled: true,
+                    fillColor: bgform,
                     border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(defaultpd),
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(255, 18, 51, 65)),
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                          color:
-                              Colors.white), // Cor da borda quando selecionado
-                      borderRadius: BorderRadius.circular(defaultpd),
+                          color: Color.fromARGB(255, 18, 51,
+                              65)), // Cor da borda quando selecionado
+                      borderRadius: BorderRadius.circular(borderform),
                     ),
                   ),
-                  style: const TextStyle(color: Colors.white), // Cor do texto
+                  style: const TextStyle(
+                      color: Color.fromRGBO(26, 76, 97, 1),
+                      fontSize: 16,
+                      fontFamily: 'Sansation'),
+                  // Cor do texto
                   validator: MultiValidator([
                     RequiredValidator(errorText: 'Esse campo é obrigatório!'),
                     EmailValidator(errorText: 'Email Inválido!')
@@ -87,20 +108,41 @@ class _LoginFormState extends State<LoginForm> {
                 const SizedBox(
                   height: 20,
                 ),
+                Container(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Digite sua senha',
+                      style: TextStyle(
+                          color: Color.fromRGBO(26, 76, 97, 1),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Sansation',
+                          fontSize: 16),
+                    )),
+                SizedBox(
+                  height: 12,
+                ),
                 TextFormField(
                     obscureText: _isObscure,
                     controller: _controllerPassword,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    style: const TextStyle(color: Colors.white),
+                    style:
+                        const TextStyle(color: Color.fromARGB(255, 18, 51, 65)),
                     decoration: InputDecoration(
-                        labelText: 'Digite sua senha',
-                        labelStyle: const TextStyle(color: Colors.white),
+                        labelText: 'Senha',
+                        labelStyle: const TextStyle(
+                            color: Color.fromRGBO(26, 76, 97, 1),
+                            fontSize: 16,
+                            fontFamily: 'Sansation'),
+                        filled: true,
+                        fillColor: bgform,
                         border: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(defaultpd)),
+                            borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 18, 51, 65)),
+                            borderRadius: BorderRadius.circular(borderform)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white),
-                            borderRadius: BorderRadius.circular(defaultpd)),
+                            borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 18, 51, 65)),
+                            borderRadius: BorderRadius.circular(borderform)),
                         suffixIcon: GestureDetector(
                           onTap: () {
                             setState(() {
@@ -111,7 +153,7 @@ class _LoginFormState extends State<LoginForm> {
                             _isObscure
                                 ? Icons.remove_red_eye
                                 : Icons.remove_red_eye_outlined,
-                            color: Colors.white,
+                            color: Color.fromRGBO(26, 76, 97, 1),
                           ),
                         )),
                     validator: MultiValidator([
@@ -132,8 +174,8 @@ class _LoginFormState extends State<LoginForm> {
                       children: [
                         Theme(
                           data: ThemeData(
-                            unselectedWidgetColor: Colors
-                                .white, // Define a cor do Checkbox não selecionado
+                            unselectedWidgetColor:
+                                Color.fromRGBO(26, 76, 97, 1),
                           ),
                           child: Checkbox(
                             value: _rememberPassword ?? false,
@@ -146,7 +188,10 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                         const Text(
                           'Lembrar senha',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                              color: Color.fromRGBO(26, 76, 97, 1),
+                              fontSize: 15,
+                              fontFamily: 'Sansation'),
                         )
                       ],
                     ),
@@ -156,7 +201,11 @@ class _LoginFormState extends State<LoginForm> {
                         },
                         child: const Text(
                           'Esqueceu a senha?',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                              color: Color.fromRGBO(26, 76, 97, 1),
+                              fontSize: 15,
+                              fontFamily: 'Sansation',
+                              fontWeight: FontWeight.bold),
                         )),
                   ],
                 ),
@@ -180,12 +229,12 @@ class _LoginFormState extends State<LoginForm> {
                     height: 60,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                        color: scdColor,
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(defaultpd))),
+                        color: Color.fromRGBO(26, 76, 97, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(30))),
                     child: const Text(
-                      'Entrar',
+                      'Acessar',
                       style: TextStyle(
+                          fontFamily: 'Sansation',
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
@@ -199,7 +248,10 @@ class _LoginFormState extends State<LoginForm> {
             ),
             const Text(
               "Não possui uma conta?  ",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Color.fromRGBO(26, 76, 97, 1),
+                  fontSize: 15,
+                  fontFamily: 'Sansation'),
             ),
             GestureDetector(
               onTap: () {
@@ -209,7 +261,10 @@ class _LoginFormState extends State<LoginForm> {
               child: const Text(
                 "Crie uma conta grátis aqui",
                 style: TextStyle(
-                    color: scdColor, fontWeight: FontWeight.bold, fontSize: 14),
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    fontFamily: 'Sansation'),
               ),
             )
           ],
