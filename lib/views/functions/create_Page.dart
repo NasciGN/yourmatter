@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/models/page.dart';
 import 'package:your_matter/providers/cadernos_provider.dart';
+import 'package:your_matter/resources/auth.dart';
 
 class NewPage extends StatefulWidget {
   myPage note;
@@ -26,7 +28,8 @@ class _NewPageState extends State<NewPage> {
   void loadingExistingNote() {
     final doc = Document()..insert(0, widget.note.content);
 
-    _titleController.text = widget.note.title; // Preencha o TextField com o título
+    _titleController.text =
+        widget.note.title; // Preencha o TextField com o título
 
     setState(() {
       _controller = QuillController(
@@ -49,13 +52,24 @@ class _NewPageState extends State<NewPage> {
           onPressed: () {
             if (widget.isNewNote && !_controller.document.isEmpty()) {
               myPage newNote = myPage(
+                  id: '',
                   content: _controller.document.toPlainText(),
                   searchableDocument: '',
                   title: _titleController.text,
                   turma: 'turma',
                   uid: '');
               pageControl.addPageWithUserId(newNote);
-            } else {}
+            } else {
+              myPage note = myPage(
+                  id: widget.note.id,
+                  content: _controller.document.toPlainText(),
+                  searchableDocument: widget.note.searchableDocument,
+                  title: _titleController.text,
+                  turma: widget.note.turma,
+                  uid: widget.note.uid);
+              pageControl.editPageWithUserId(note);
+            }
+            print('Texto: ${_titleController.text}');
             Get.offNamed('/home');
           },
         ),
