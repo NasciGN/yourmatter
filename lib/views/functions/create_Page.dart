@@ -71,7 +71,7 @@ class _NewPageState extends State<NewPage> {
                   uid: widget.note.uid);
               pageControl.editPageWithUserId(note);
             }
-            print('Texto: ${_titleController.text}');
+
             Get.offNamed('/home');
           },
         ),
