@@ -49,7 +49,7 @@ class _AccountPageState extends State<AccountPage> {
           elevation: 0, // Remove a sombra da AppBar
           leading: IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios,
               color: Colors.black, // Define a cor do botão de retroceder
             ),
             onPressed: () {
@@ -66,7 +66,9 @@ class _AccountPageState extends State<AccountPage> {
               child: const Text(
                 'Minha Conta',
                 style: TextStyle(
-                    color: Color.fromARGB(255, 18, 51, 65), fontSize: 30, fontWeight: FontWeight.bold),
+                    color: Color.fromARGB(255, 18, 51, 65),
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Container(

@@ -11,7 +11,11 @@ class NewPage extends StatefulWidget {
   bool isNewNote;
   String? documentId;
 
-  NewPage({super.key, required this.note, required this.isNewNote, this.documentId});
+  NewPage(
+      {super.key,
+      required this.note,
+      required this.isNewNote,
+      this.documentId});
 
   @override
   State<NewPage> createState() => _NewPageState();
@@ -48,7 +52,7 @@ class _NewPageState extends State<NewPage> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_ios,
             color: Colors.black,
           ),
           onPressed: () {

@@ -66,105 +66,110 @@ class _RecoveryPassPageState extends State<RecoveryPassPage> {
             height: size.height * 0.60,
             child: Form(
               key: _formKey,
-              child: Column(children: [
-                const Padding(
-                  padding:
-                      EdgeInsets.only(top: defaultpd, bottom: defaultpd * 2),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Recuperar senha",
-                      style: TextStyle(
-                        fontFamily: 'Sansation',
-                        fontWeight: FontWeight.bold,
-                        color: bgColor,
-                        fontSize: 30,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(
+                          top: defaultpd, bottom: defaultpd * 2),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Recuperar senha",
+                          style: TextStyle(
+                            fontFamily: 'Sansation',
+                            fontWeight: FontWeight.bold,
+                            color: bgColor,
+                            fontSize: 30,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                const Text(
-                  'Digite o e-mail  usado para  acessar a conta  e um e-mail será enviado',
-                  style: TextStyle(
-                    color: bgColor,
-                    fontSize: 18,
-                    fontFamily: 'Sansation',
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Digite seu e-mail',
+                    const Text(
+                      'Digite o endereço de email utilizado parfa acessar a conta que enviaremos um email de recuperação.',
                       style: TextStyle(
-                          color: Color.fromRGBO(26, 76, 97, 1),
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Sansation',
-                          fontSize: 16),
-                    )),
-                SizedBox(
-                  height: 12,
-                ),
-                TextFormField(
-                  controller: _controllerEmail,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    labelText: 'Digite seu e-mail',
-                    labelStyle:
-                        const TextStyle(color: bgColor), // Cor do rótulo
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color:
-                              Colors.white), // Cor da borda quando selecionado
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
-                  ),
-                  style: const TextStyle(color: bgColor),
-                  // Cor do texto
-                  validator: MultiValidator([
-                    RequiredValidator(errorText: 'Esse campo é obrigatório!'),
-                    EmailValidator(errorText: 'Email Inválido!')
-                  ]),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    if (_formKey.currentState!.validate()) {
-                      setState(() {
-                        _isLoading = true;
-                      });
-                      recoveryPass(_controllerEmail.text);
-                      Get.offNamed('/login');
-                      setState(() {
-                        _isLoading = false;
-                      });
-                    }
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(top: defaultpd * 4),
-                    width: double.infinity,
-                    height: 60,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
                         color: bgColor,
-                        borderRadius:
-                            BorderRadius.all(Radius.circular(borderform))),
-                    child: const Text(
-                      'Enviar email',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                        fontSize: 18,
+                        fontFamily: 'Sansation',
+                      ),
                     ),
-                  ),
-                ),
-              ]),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Digite seu e-mail',
+                          style: TextStyle(
+                              color: Color.fromRGBO(26, 76, 97, 1),
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Sansation',
+                              fontSize: 16),
+                        )),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      controller: _controllerEmail,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                        labelText: 'E-mail',
+                        labelStyle: const TextStyle(
+                            color: Color.fromARGB(255, 18, 51, 65)),
+                        filled: true,
+                        fillColor: bgform,
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 18, 51, 65)),
+                          borderRadius: BorderRadius.circular(borderform),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 18, 51,
+                                  65)), // Cor da borda quando selecionado
+                          borderRadius: BorderRadius.circular(borderform),
+                        ),
+                      ),
+                      style: const TextStyle(color: bgColor),
+                      // Cor do texto
+                      validator: MultiValidator([
+                        RequiredValidator(
+                            errorText: 'Esse campo é obrigatório!'),
+                        EmailValidator(errorText: 'Email Inválido!')
+                      ]),
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            _isLoading = true;
+                          });
+                          recoveryPass(_controllerEmail.text);
+                          Get.offNamed('/login');
+                          setState(() {
+                            _isLoading = false;
+                          });
+                        }
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: defaultpd * 4),
+                        width: double.infinity,
+                        height: 60,
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(
+                            color: bgColor,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(borderform))),
+                        child: const Text(
+                          'Enviar email',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ),
         ]),

@@ -97,7 +97,9 @@ class _HomePageState extends State<HomePage>
                   Text(
                     'Olá, $onlineUserName',
                     style: const TextStyle(
-                        fontSize: 26.0, fontWeight: FontWeight.bold),
+                        fontSize: 26.0,
+                        fontWeight: FontWeight.bold,
+                        color: bgColor),
                   ),
                   GestureDetector(
                     child: const CircleAvatar(
@@ -123,7 +125,7 @@ class _HomePageState extends State<HomePage>
             tabs: [
               Tab(
                 child: Text(
-                  'Meus Cadernos',
+                  'Cadernos',
                   style: GoogleFonts.roboto(
                       color: bgColor,
                       letterSpacing: 1,
@@ -132,7 +134,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
               Tab(
-                  child: Text('Minhas Turmas',
+                  child: Text('Turmas',
                       style: GoogleFonts.roboto(
                           color: bgColor,
                           letterSpacing: 1,
@@ -145,7 +147,7 @@ class _HomePageState extends State<HomePage>
                 color: bgColor, // Cor da linha inferior quando selecionada
               ),
               insets: EdgeInsets.symmetric(
-                  horizontal: 16), // Espaçamento à esquerda e à direita
+                  horizontal: 48), // Espaçamento à esquerda e à direita
             ),
           ),
         ),
