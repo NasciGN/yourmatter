@@ -35,13 +35,14 @@ class _MeusCadernosState extends State<MeusCadernos> {
 
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 1 / 1.2,
                 crossAxisCount: 2, // Número de colunas
               ),
               itemCount: notebooks.length,
               itemBuilder: (context, index) {
                 final notebook = notebooks[index];
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                   child: GestureDetector(
                     onLongPress: () {
                       showDialog<String>(
