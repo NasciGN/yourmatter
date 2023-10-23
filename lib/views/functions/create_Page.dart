@@ -15,6 +15,7 @@ class NewPage extends StatefulWidget {
 
 class _NewPageState extends State<NewPage> {
   QuillController _controller = QuillController.basic();
+  final TextEditingController _titleController = TextEditingController();
 
   @override
   void initState() {
@@ -23,17 +24,21 @@ class _NewPageState extends State<NewPage> {
   }
 
   void loadingExistingNote() {
-    final doc = Document()..insert(0, widget.note.title);
+    final doc = Document()..insert(0, widget.note.content);
+
+    _titleController.text = widget.note.title; // Preencha o TextField com o título
+
     setState(() {
       _controller = QuillController(
-          document: doc, selection: const TextSelection.collapsed(offset: 0));
+        document: doc,
+        selection: TextSelection.collapsed(offset: doc.length),
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final pageControl = PageControl();
-    final TextEditingController _titleController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -63,7 +68,7 @@ class _NewPageState extends State<NewPage> {
           child: TextField(
             controller: _titleController,
             decoration: const InputDecoration(
-              hintText: 'Nome do caderno',
+              hintText: 'Nome da matéria',
               fillColor: Colors.transparent,
             ),
           ),
