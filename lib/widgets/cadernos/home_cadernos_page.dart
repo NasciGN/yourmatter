@@ -42,7 +42,7 @@ class _MeusCadernosState extends State<MeusCadernos> {
               itemBuilder: (context, index) {
                 final notebook = notebooks[index];
                 return Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                   child: GestureDetector(
                     onLongPress: () {
                       showDialog<String>(
