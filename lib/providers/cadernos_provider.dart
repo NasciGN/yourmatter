@@ -31,13 +31,17 @@ class PageControl {
       'searchableDocument': page.searchableDocument,
     };
     if (userId != null) {
-      await FirebaseFirestore.instance.collection('pages').add(PageData);
-    } else {
-      if (kDebugMode) {
-        print("Nenhum usuário autenticado.");
+      if (userId != null) {
+        final documentReference = await FirebaseFirestore.instance.collection(
+            'pages').add(PageData);
+      } else {
+        if (kDebugMode) {
+          print("Nenhum usuário autenticado.");
+        }
       }
     }
   }
+
 
   // Editar uma página existente com o ID do usuário logado
   Future<void> editPageWithUserId(myPage page) async {
@@ -129,5 +133,17 @@ class PageControl {
         return Stream.value([]);
       }
     });
+  }
+
+  Future<String?> getExistingContentFromDocument(String? documentId) async {
+    final collection = FirebaseFirestore.instance.collection('pages');
+    final doc = await collection.doc(documentId).get();
+    if (doc.exists) {
+      final data = doc.data();
+      return data?['content'] as String;
+      print(documentId);
+    }
+    print(documentId);
+    return null;
   }
 }

@@ -9,7 +9,9 @@ import 'package:your_matter/resources/auth.dart';
 class NewPage extends StatefulWidget {
   myPage note;
   bool isNewNote;
-  NewPage({super.key, required this.note, required this.isNewNote});
+  String? documentId;
+
+  NewPage({super.key, required this.note, required this.isNewNote, this.documentId});
 
   @override
   State<NewPage> createState() => _NewPageState();
@@ -18,6 +20,7 @@ class NewPage extends StatefulWidget {
 class _NewPageState extends State<NewPage> {
   QuillController _controller = QuillController.basic();
   final TextEditingController _titleController = TextEditingController();
+  final pageControl = PageControl();
 
   @override
   void initState() {
@@ -41,7 +44,6 @@ class _NewPageState extends State<NewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final pageControl = PageControl();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

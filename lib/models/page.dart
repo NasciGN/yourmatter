@@ -14,6 +14,7 @@ class myPage {
       required this.turma,
       required this.uid});
 
+
   factory myPage.fromJson(Map<String, dynamic> json) {
     return myPage(
       id: json['id'],
