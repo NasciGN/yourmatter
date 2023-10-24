@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:your_matter/models/page.dart';
-import 'package:your_matter/resources/auth.dart';
 import 'package:your_matter/utils/constantes.dart';
 import 'package:your_matter/views/functions/create_Page.dart';
 import '../widgets/cadernos/home_cadernos_page.dart';
@@ -29,7 +28,9 @@ class _HomePageState extends State<HomePage>
         searchableDocument: '',
         title: '',
         turma: '',
-        uid: '');
+        uid: '',
+        bgColor: [],
+        borderColor: []);
 
     goToNewPage(newNote, true);
   }
@@ -79,7 +80,9 @@ class _HomePageState extends State<HomePage>
                 searchableDocument: '',
                 title: '',
                 turma: '',
-                uid: '');
+                uid: '',
+                bgColor: [],
+                borderColor: []);
             bool teste = true;
             goToNewPage(newNote, teste);
           },

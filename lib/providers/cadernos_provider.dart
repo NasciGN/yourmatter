@@ -1,8 +1,9 @@
+import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:your_matter/main.dart';
+import 'package:your_matter/utils/constantes.dart';
 import '../models/page.dart';
 
 class PageControl {
@@ -21,7 +22,11 @@ class PageControl {
 
   // Adicionar uma nova página com o ID do usuário logado
   Future<void> addPageWithUserId(myPage page) async {
+    final random = Random();
+    final randomColorIndex = random.nextInt(colorsBook.length);
+    final selectedColors = colorsBook[randomColorIndex];
     final userId = await getUserId();
+
     final PageData = {
       'id': FirebaseFirestore.instance.collection('rooms').doc().id,
       'content': page.content,
@@ -29,23 +34,18 @@ class PageControl {
       'turma': page.turma,
       'uid': userId, // Defina o UID com o ID do usuário logado
       'searchableDocument': page.searchableDocument,
+      'bgColor': selectedColors["bgColor"],
+      'borderColor': selectedColors["borderColor"],
     };
     if (userId != null) {
-      if (userId != null) {
-        final documentReference = await FirebaseFirestore.instance.collection(
-            'pages').add(PageData);
-      } else {
-        if (kDebugMode) {
-          print("Nenhum usuário autenticado.");
-        }
-      }
+      await FirebaseFirestore.instance.collection('pages').add(PageData);
     }
   }
-
 
   // Editar uma página existente com o ID do usuário logado
   Future<void> editPageWithUserId(myPage page) async {
     final userId = await getUserId();
+
     if (userId != null) {
       final document = await FirebaseFirestore.instance
           .collection('pages')
@@ -53,18 +53,16 @@ class PageControl {
           .get()
           .then((snapshot) => snapshot.docs.first);
 
-      if (document != null) {
-        FirebaseFirestore.instance.collection('pages').doc(document.id).set({
-          'id': page.id,
-          'content': page.content,
-          'title': page.title,
-          'turma': page.turma,
-          'uid': userId,
-          'searchableDocument': page.searchableDocument,
-        });
-      } else {
-        print('Documento não encontrado.');
-      }
+      FirebaseFirestore.instance.collection('pages').doc(document.id).set({
+        'id': page.id,
+        'content': page.content,
+        'title': page.title,
+        'turma': page.turma,
+        'uid': userId,
+        'searchableDocument': page.searchableDocument,
+        'bgColor': page.bgColor,
+        'borderColor': page.borderColor
+      });
     } else {
       if (kDebugMode) {
         print("Nenhum usuário autenticado.");
@@ -102,13 +100,14 @@ class PageControl {
       if (doc.exists) {
         final data = doc.data() as Map<String, dynamic>;
         return myPage(
-          id: data['id'],
-          content: data['content'],
-          title: data['title'],
-          turma: data['turma'],
-          uid: data['uid'],
-          searchableDocument: data['searchableDocument'],
-        );
+            id: data['id'],
+            content: data['content'],
+            title: data['title'],
+            turma: data['turma'],
+            uid: data['uid'],
+            searchableDocument: data['searchableDocument'],
+            bgColor: data['bgColor'],
+            borderColor: data['borderColor']);
       }
     }
     return null;
@@ -141,9 +140,36 @@ class PageControl {
     if (doc.exists) {
       final data = doc.data();
       return data?['content'] as String;
-      print(documentId);
     }
     print(documentId);
     return null;
+  }
+
+  Future<void> changeColorCard(
+      myPage page, List<int>? bgColor, List<int>? borderColor) async {
+    final userId = await getUserId();
+
+    if (userId != null) {
+      final document = await FirebaseFirestore.instance
+          .collection('pages')
+          .where('id', isEqualTo: page.id)
+          .get()
+          .then((snapshot) => snapshot.docs.first);
+
+      FirebaseFirestore.instance.collection('pages').doc(document.id).set({
+        'id': page.id,
+        'content': page.content,
+        'title': page.title,
+        'turma': page.turma,
+        'uid': userId,
+        'searchableDocument': page.searchableDocument,
+        'bgColor': bgColor,
+        'borderColor': borderColor
+      });
+    } else {
+      if (kDebugMode) {
+        print("Nenhum usuário autenticado.");
+      }
+    }
   }
 }

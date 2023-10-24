@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/models/page.dart';
 import 'package:your_matter/providers/cadernos_provider.dart';
-import 'package:your_matter/resources/auth.dart';
 
+// ignore: must_be_immutable
 class NewPage extends StatefulWidget {
   myPage note;
   bool isNewNote;
@@ -63,7 +62,9 @@ class _NewPageState extends State<NewPage> {
                   searchableDocument: '',
                   title: _titleController.text,
                   turma: 'turma',
-                  uid: '');
+                  uid: '',
+                  bgColor: [],
+                  borderColor: []);
               pageControl.addPageWithUserId(newNote);
             } else {
               myPage note = myPage(
@@ -72,7 +73,9 @@ class _NewPageState extends State<NewPage> {
                   searchableDocument: widget.note.searchableDocument,
                   title: _titleController.text,
                   turma: widget.note.turma,
-                  uid: widget.note.uid);
+                  uid: widget.note.uid,
+                  bgColor: widget.note.bgColor,
+                  borderColor: widget.note.borderColor);
               pageControl.editPageWithUserId(note);
             }
 
