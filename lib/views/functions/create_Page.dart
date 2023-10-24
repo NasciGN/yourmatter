@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/models/page.dart';
-import 'package:your_matter/providers/cadernos_provider.dart';
+import 'package:your_matter/controllers/cadernos_provider.dart';
 
 // ignore: must_be_immutable
 class NewPage extends StatefulWidget {
@@ -33,10 +33,7 @@ class _NewPageState extends State<NewPage> {
 
   void loadingExistingNote() {
     final doc = Document()..insert(0, widget.note.content);
-
-    _titleController.text =
-        widget.note.title; // Preencha o TextField com o título
-
+    _titleController.text = widget.note.title;
     setState(() {
       _controller = QuillController(
         document: doc,

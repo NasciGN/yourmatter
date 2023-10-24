@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-
-import '../../resources/auth.dart';
+import '../../controllers/resources/auth.dart';
 import '../../utils/constantes.dart';
 import '../login_page.dart';
 
@@ -45,8 +42,6 @@ class _LogonFormState extends State<LogonForm> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Form(
         key: _formKey,
         child: Column(
@@ -92,21 +87,17 @@ class _LogonFormState extends State<LogonForm> {
                       borderRadius: BorderRadius.circular(borderform),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: bgColor), // Cor da borda quando selecionado
+                      borderSide: const BorderSide(color: bgColor),
                       borderRadius: BorderRadius.circular(borderform),
                     ),
                   ),
                   style: const TextStyle(color: bgColor),
-                  // Cor do texto
                   validator: (value) {
-                    // Use uma expressão regular para verificar se o valor contém apenas letras e espaços.
-                    // ^[A-Za-z ]+$ significa que aceitaremos apenas letras maiúsculas, minúsculas e espaços.
                     final pattern = RegExp(r'^[A-Za-z ]+$');
                     if (!pattern.hasMatch(value ?? '')) {
                       return 'Digite um nome válido';
                     }
-                    return null; // Retornar nulo se o valor for válido.
+                    return null;
                   },
                 ),
                 const SizedBox(

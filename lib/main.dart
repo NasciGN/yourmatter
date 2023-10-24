@@ -6,7 +6,7 @@ import 'package:your_matter/views/home_page.dart';
 import 'package:your_matter/views/login_page.dart';
 import 'package:your_matter/views/login_recovery_pass.dart';
 import 'package:your_matter/views/logon_page.dart';
-import 'resources/firebase_options.dart';
+import 'controllers/resources/firebase_options.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 Future<void> main() async {

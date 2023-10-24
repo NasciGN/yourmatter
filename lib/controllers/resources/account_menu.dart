@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:your_matter/resources/auth.dart';
+import 'package:your_matter/controllers/resources/auth.dart';
+
+import '../../utils/constantes.dart';
 
 class AccountMenu extends StatefulWidget {
   const AccountMenu({super.key});
@@ -39,15 +41,16 @@ class _AccountMenuState extends State<AccountMenu> {
                   children: [
                     Icon(
                       Icons.lock_outline,
-                      color: Colors.white,
+                      color: bgColor,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         'Editar senha',
                         style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
+                          fontFamily: 'Sansation',
+                          fontSize: 18,
+                          color: bgColor,
                         ),
                       ),
                     ),
@@ -55,7 +58,7 @@ class _AccountMenuState extends State<AccountMenu> {
                 ),
                 Icon(
                   Icons.chevron_right,
-                  color: Colors.white,
+                  color: bgColor,
                 ),
               ],
             ),
@@ -108,7 +111,10 @@ class _AccountMenuState extends State<AccountMenu> {
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         'Excluir minha conta',
-                        style: TextStyle(fontSize: 15, color: Colors.redAccent),
+                        style: TextStyle(
+                            fontFamily: 'Sansation',
+                            fontSize: 18,
+                            color: Colors.redAccent),
                       ),
                     ),
                   ],
@@ -162,15 +168,16 @@ class _AccountMenuState extends State<AccountMenu> {
                   children: [
                     Icon(
                       Icons.logout,
-                      color: Colors.white,
+                      color: bgColor,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
                         'Sair',
                         style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
+                          fontFamily: 'Sansation',
+                          fontSize: 18,
+                          color: bgColor,
                         ),
                       ),
                     ),
@@ -178,7 +185,7 @@ class _AccountMenuState extends State<AccountMenu> {
                 ),
                 Icon(
                   Icons.chevron_right,
-                  color: Colors.white,
+                  color: bgColor,
                 ),
               ],
             ),

@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:your_matter/models/page.dart';
 import 'package:your_matter/utils/constantes.dart';
 import 'package:your_matter/views/functions/create_Page.dart';
-import '../widgets/cadernos/home_cadernos_page.dart';
-import '../widgets/turmas/home_turmas_page.dart';
+import 'widgets/cadernos/home_cadernos_page.dart';
+import 'widgets/turmas/home_turmas_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

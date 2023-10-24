@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:your_matter/resources/auth.dart';
+import 'package:your_matter/controllers/resources/auth.dart';
 import 'package:your_matter/utils/constantes.dart';
 
 class RecoveryPassPage extends StatefulWidget {
@@ -14,8 +14,6 @@ class RecoveryPassPage extends StatefulWidget {
 class _RecoveryPassPageState extends State<RecoveryPassPage> {
   TextEditingController _controllerEmail = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
-  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -141,14 +139,10 @@ class _RecoveryPassPageState extends State<RecoveryPassPage> {
                     GestureDetector(
                       onTap: () async {
                         if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            _isLoading = true;
-                          });
+                          setState(() {});
                           recoveryPass(_controllerEmail.text);
                           Get.offNamed('/login');
-                          setState(() {
-                            _isLoading = false;
-                          });
+                          setState(() {});
                         }
                       },
                       child: Container(
