@@ -1,42 +1,40 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:your_matter/models/page.dart';
 import 'package:your_matter/utils/constantes.dart';
 
 class CardCaderno extends StatelessWidget {
-  final String title;
+  final myPage note;
 
-  CardCaderno({required this.title});
+  CardCaderno({required this.note});
 
   @override
   Widget build(BuildContext context) {
-    final random = Random();
-    final randomColorIndex = random.nextInt(colorsBook.length);
-    final selectedColors = colorsBook[randomColorIndex];
     return Stack(
       children: [
         Positioned(
           left: 5,
-          width: 200,
-          height: 260,
+          width: 160,
+          height: 220,
           child: Container(
             padding: EdgeInsets.only(
                 top: defaultpd * 2, left: defaultpd, right: defaultpd),
             decoration: BoxDecoration(
               border: Border.all(
                   width: 8,
-                  color: selectedColors["borderColor"] ?? Colors.black38),
+                  color: Color.fromARGB(255, note.borderColor[0],
+                      note.borderColor[1], note.borderColor[2])),
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(defaultpd),
                   bottomLeft: Radius.circular(defaultpd),
-                  topRight: Radius.circular(defaultpd * 2),
-                  bottomRight: Radius.circular(defaultpd * 2)),
-              color: selectedColors["bgColor"],
+                  topRight: Radius.circular(defaultpd),
+                  bottomRight: Radius.circular(defaultpd)),
+              color: Color.fromARGB(
+                  255, note.bgColor[0], note.bgColor[1], note.bgColor[2]),
             ),
             child: Align(
               alignment: Alignment.topCenter,
               child: Text(
-                title,
+                note.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
@@ -55,7 +53,8 @@ class CardCaderno extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(3)),
-              color: selectedColors["borderColor"] ?? Colors.black38,
+              color: Color.fromARGB(255, note.borderColor[0],
+                  note.borderColor[1], note.borderColor[2]),
             ),
           ),
         ),
@@ -67,7 +66,8 @@ class CardCaderno extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(3)),
-              color: selectedColors["borderColor"] ?? Colors.black38,
+              color: Color.fromARGB(255, note.borderColor[0],
+                  note.borderColor[1], note.borderColor[2]),
             ),
           ),
         ),
@@ -79,7 +79,8 @@ class CardCaderno extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(3)),
-              color: selectedColors["borderColor"] ?? Colors.black38,
+              color: Color.fromARGB(255, note.borderColor[0],
+                  note.borderColor[1], note.borderColor[2]),
             ),
           ),
         ),
@@ -91,7 +92,8 @@ class CardCaderno extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(3)),
-              color: selectedColors["borderColor"] ?? Colors.black38,
+              color: Color.fromARGB(255, note.borderColor[0],
+                  note.borderColor[1], note.borderColor[2]),
             ),
           ),
         ),
@@ -103,19 +105,8 @@ class CardCaderno extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(3)),
-              color: selectedColors["borderColor"] ?? Colors.black38,
-            ),
-          ),
-        ),
-        Positioned(
-          left: 0,
-          top: 220,
-          width: 25,
-          height: 10,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(3)),
-              color: selectedColors["borderColor"] ?? Colors.black38,
+              color: Color.fromARGB(255, note.borderColor[0],
+                  note.borderColor[1], note.borderColor[2]),
             ),
           ),
         ),
