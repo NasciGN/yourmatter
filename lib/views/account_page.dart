@@ -40,10 +40,10 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: bgColor2,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
-            size.height * .1), // Define a altura zero para a AppBar
+            size.height * .1),
         child: AppBar(
           backgroundColor: Colors.transparent, // Torna a AppBar transparente
           elevation: 0, // Remove a sombra da AppBar
@@ -61,26 +61,32 @@ class _AccountPageState extends State<AccountPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: size.height * .1,
-              child: const Text(
-                'Minha Conta',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 18, 51, 65),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold),
+            CircleAvatar(
+              radius: 70,
+              backgroundColor: Color(0xFF907691),
+              child: CircleAvatar(
+                radius: 63,
+                backgroundColor: Color(0xFFd9d9d9),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: SizedBox(
+                height: size.height * .1,
+                child: const Text(
+                  'MEU PERFIL',
+                  style: TextStyle(
+                      color: bgColor,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
             Container(
-              height: size.height * .8,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(defaultpd * 2),
-                    topRight: Radius.circular(defaultpd * 2)),
-                color: bgColor,
-              ),
+              height: size.height ,
               child: Padding(
-                padding: const EdgeInsets.all(defaultpd),
+                padding: const EdgeInsets.all(1),
                 child: Column(
                   children: [
                     const Padding(
@@ -98,7 +104,7 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ),
                     const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 25, 0, 30),
+                      padding: EdgeInsets.fromLTRB(20, 25, 0, 0),
                       child: Row(
                         children: [
                           Text(
@@ -112,7 +118,7 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                     ),
                     Padding(
-                        padding: const EdgeInsets.fromLTRB(18, 0, 18, 5),
+                        padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
                         child: Column(
                           children: [
                             TextFormField(
