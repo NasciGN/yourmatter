@@ -35,7 +35,7 @@ class _MeusCadernosState extends State<MeusCadernos> {
 
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1 / 1.2,
+                childAspectRatio: 1 / 1.3,
                 crossAxisCount: 2, // Número de colunas
               ),
               itemCount: notebooks.length,
