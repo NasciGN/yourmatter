@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../utils/constantes.dart';
 import 'forms/login_form.dart';
 
@@ -57,8 +56,8 @@ class _LoginPageState extends State<LoginPage> {
             height: size.height * 0.7,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(defaultpd * 4),
-                )),
+              topLeft: Radius.circular(defaultpd * 4),
+            )),
             child: const LoginForm(),
           ),
         ]),

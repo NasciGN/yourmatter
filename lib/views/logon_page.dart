@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../utils/constantes.dart';
 import 'forms/logon_form.dart';
 
@@ -14,7 +13,6 @@ class LogonPage extends StatefulWidget {
 class _LogonPageState extends State<LogonPage> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

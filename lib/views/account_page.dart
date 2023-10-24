@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:your_matter/resources/account_menu.dart';
-import 'package:your_matter/resources/auth.dart';
+import 'package:your_matter/controllers/resources/account_menu.dart';
+import 'package:your_matter/controllers/resources/auth.dart';
 import 'package:your_matter/utils/constantes.dart';
 
 class AccountPage extends StatefulWidget {
@@ -42,8 +42,7 @@ class _AccountPageState extends State<AccountPage> {
     return Scaffold(
       backgroundColor: bgColor2,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(
-            size.height * .1),
+        preferredSize: Size.fromHeight(size.height * .1),
         child: AppBar(
           backgroundColor: Colors.transparent, // Torna a AppBar transparente
           elevation: 0, // Remove a sombra da AppBar
@@ -69,7 +68,6 @@ class _AccountPageState extends State<AccountPage> {
                 backgroundColor: Color(0xFFd9d9d9),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: SizedBox(
@@ -84,7 +82,7 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
             Container(
-              height: size.height ,
+              height: size.height,
               child: Padding(
                 padding: const EdgeInsets.all(1),
                 child: Column(
