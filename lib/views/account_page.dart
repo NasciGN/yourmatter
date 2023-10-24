@@ -42,8 +42,7 @@ class _AccountPageState extends State<AccountPage> {
     return Scaffold(
       backgroundColor: bgColor2,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(
-            size.height * .1),
+        preferredSize: Size.fromHeight(size.height * .1),
         child: AppBar(
           backgroundColor: Colors.transparent, // Torna a AppBar transparente
           elevation: 0, // Remove a sombra da AppBar
@@ -69,7 +68,6 @@ class _AccountPageState extends State<AccountPage> {
                 backgroundColor: Color(0xFFd9d9d9),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 20),
               child: SizedBox(
@@ -84,128 +82,121 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
             Container(
-              height: size.height ,
-              child: Padding(
-                padding: const EdgeInsets.all(1),
-                child: Column(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                      child: Row(
+              height: size.height,
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Conta',
+                          style: TextStyle(
+                              fontSize: 26.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(20, 25, 0, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Atualizar dados',
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
+                      child: Column(
                         children: [
-                          Text(
-                            'Conta',
-                            style: TextStyle(
-                                fontSize: 26.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+                          TextFormField(
+                            controller: _controllerNome,
+                            //validator: Validatorless.required('Digite seu nome'),
+                            decoration: InputDecoration(
+                              labelText: 'Digite seu nome',
+                              labelStyle: const TextStyle(
+                                  color: Colors.white), // Cor do rótulo
+                              border: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(defaultpd),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
+                                // Cor da borda quando selecionado
+                                borderRadius: BorderRadius.circular(defaultpd),
+                              ),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                            onFieldSubmitted: (String value) async {},
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            controller: _controllerEmail,
+                            //validator: Validatorless.required('Digite seu nome'),
+                            decoration: InputDecoration(
+                              labelText: 'Digite seu nome',
+                              labelStyle: const TextStyle(
+                                  color: Colors.white), // Cor do rótulo
+                              border: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
+                                borderRadius: BorderRadius.circular(defaultpd),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.white),
+                                // Cor da borda quando selecionado
+                                borderRadius: BorderRadius.circular(defaultpd),
+                              ),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                            onFieldSubmitted: (String value) async {},
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              await updateUser(
+                                  _controllerNome.text, _controllerEmail.text);
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 60,
+                              alignment: Alignment.center,
+                              decoration: const BoxDecoration(
+                                  color: scdColor,
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(defaultpd))),
+                              child: const Text(
+                                'Atualizar',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                            ),
                           ),
                         ],
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(20, 25, 0, 0),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Atualizar dados',
-                            style: TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              controller: _controllerNome,
-                              //validator: Validatorless.required('Digite seu nome'),
-                              decoration: InputDecoration(
-                                labelText: 'Digite seu nome',
-                                labelStyle: const TextStyle(
-                                    color: Colors.white), // Cor do rótulo
-                                border: OutlineInputBorder(
-                                  borderSide:
-                                      const BorderSide(color: Colors.white),
-                                  borderRadius:
-                                      BorderRadius.circular(defaultpd),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors
-                                          .white), // Cor da borda quando selecionado
-                                  borderRadius:
-                                      BorderRadius.circular(defaultpd),
-                                ),
-                              ),
-                              style: const TextStyle(color: Colors.white),
-                              onFieldSubmitted: (String value) async {},
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            TextFormField(
-                              controller: _controllerEmail,
-                              //validator: Validatorless.required('Digite seu nome'),
-                              decoration: InputDecoration(
-                                labelText: 'Digite seu nome',
-                                labelStyle: const TextStyle(
-                                    color: Colors.white), // Cor do rótulo
-                                border: OutlineInputBorder(
-                                  borderSide:
-                                      const BorderSide(color: Colors.white),
-                                  borderRadius:
-                                      BorderRadius.circular(defaultpd),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Colors
-                                          .white), // Cor da borda quando selecionado
-                                  borderRadius:
-                                      BorderRadius.circular(defaultpd),
-                                ),
-                              ),
-                              style: const TextStyle(color: Colors.white),
-                              onFieldSubmitted: (String value) async {},
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            GestureDetector(
-                              onTap: () async {
-                                await updateUser(_controllerNome.text,
-                                    _controllerEmail.text);
-                              },
-                              child: Container(
-                                width: double.infinity,
-                                height: 60,
-                                alignment: Alignment.center,
-                                decoration: const BoxDecoration(
-                                    color: scdColor,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(defaultpd))),
-                                child: const Text(
-                                  'Atualizar',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )),
-                    const Spacer(),
-                    const AccountMenu(),
-                    const SizedBox(
-                      height: 30,
-                    )
-                  ],
-                ),
+                      )),
+                  const Spacer(),
+                  const AccountMenu(),
+                  const SizedBox(
+                    height: 30,
+                  )
+                ],
               ),
             ),
           ],
