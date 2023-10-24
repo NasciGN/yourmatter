@@ -174,10 +174,15 @@ class _LoginFormState extends State<LoginForm> {
                       children: [
                         Theme(
                           data: ThemeData(
+                            focusColor: bgColor,
                             unselectedWidgetColor:
                                 Color.fromRGBO(26, 76, 97, 1),
                           ),
                           child: Checkbox(
+                            shape: CircleBorder(
+                                side: BorderSide(width: defaultpd * 2)),
+                            checkColor: Colors.white,
+                            activeColor: bgColor,
                             value: _rememberPassword ?? false,
                             onChanged: (value) {
                               setState(() {
@@ -200,7 +205,7 @@ class _LoginFormState extends State<LoginForm> {
                           Get.offNamed('/recoveryPass');
                         },
                         child: const Text(
-                          'Esqueceu a senha?',
+                          'Esqueci minha senha',
                           style: TextStyle(
                               color: Color.fromRGBO(26, 76, 97, 1),
                               fontSize: 15,
