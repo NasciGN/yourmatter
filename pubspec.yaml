@@ -84,8 +84,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/recovery_pass.png
-     - assets/logo.png
+    - assets/images/recovery_pass.png
+    - assets/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -99,19 +99,19 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Bridht Melody
-       fonts:
-         - asset: assets/fonts/Bright Melody Personal Use Only.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-     - family: Sansation
-       fonts:
-         - asset: assets/fonts/sansation/Sansation_Bold.ttf
-         - asset: assets/fonts/sansation/Sansation_Bold_Italic.ttf
-         - asset: assets/fonts/sansation/Sansation_Italic.ttf
-         - asset: assets/fonts/sansation/Sansation_Light.ttf
-         - asset: assets/fonts/sansation/Sansation_Light_Italic.ttf
-         - asset: assets/fonts/sansation/Sansation_Regular.ttf
+    - family: Bridht Melody
+      fonts:
+        - asset: assets/fonts/Bright Melody Personal Use Only.ttf
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
+    - family: Sansation
+      fonts:
+        - asset: assets/fonts/sansation/Sansation_Bold.ttf
+        - asset: assets/fonts/sansation/Sansation_Bold_Italic.ttf
+        - asset: assets/fonts/sansation/Sansation_Italic.ttf
+        - asset: assets/fonts/sansation/Sansation_Light.ttf
+        - asset: assets/fonts/sansation/Sansation_Light_Italic.ttf
+        - asset: assets/fonts/sansation/Sansation_Regular.ttf
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,

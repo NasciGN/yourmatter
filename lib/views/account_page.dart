@@ -63,9 +63,10 @@ class _AccountPageState extends State<AccountPage> {
             CircleAvatar(
               radius: 70,
               backgroundColor: Color(0xFF907691),
-              child: CircleAvatar(
-                radius: 63,
-                backgroundColor: Color(0xFFd9d9d9),
+              child: Icon(
+                Icons.account_circle,
+                color: Colors.white,
+                size: 140,
               ),
             ),
             Padding(
@@ -86,21 +87,7 @@ class _AccountPageState extends State<AccountPage> {
               child: Column(
                 children: [
                   const Padding(
-                    padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Conta',
-                          style: TextStyle(
-                              fontSize: 26.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20, 25, 0, 0),
+                    padding: EdgeInsets.fromLTRB(20, 25, 0, 10),
                     child: Row(
                       children: [
                         Text(
@@ -108,7 +95,7 @@ class _AccountPageState extends State<AccountPage> {
                           style: TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: bgColor),
                         ),
                       ],
                     ),
@@ -123,20 +110,18 @@ class _AccountPageState extends State<AccountPage> {
                             decoration: InputDecoration(
                               labelText: 'Digite seu nome',
                               labelStyle: const TextStyle(
-                                  color: Colors.white), // Cor do rótulo
+                                  color: bgColor), // Cor do rótulo
                               border: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.white),
+                                borderSide: const BorderSide(color: bgColor),
                                 borderRadius: BorderRadius.circular(defaultpd),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.white),
+                                borderSide: const BorderSide(color: bgColor),
                                 // Cor da borda quando selecionado
                                 borderRadius: BorderRadius.circular(defaultpd),
                               ),
                             ),
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: bgColor),
                             onFieldSubmitted: (String value) async {},
                           ),
                           const SizedBox(
@@ -148,20 +133,18 @@ class _AccountPageState extends State<AccountPage> {
                             decoration: InputDecoration(
                               labelText: 'Digite seu nome',
                               labelStyle: const TextStyle(
-                                  color: Colors.white), // Cor do rótulo
+                                  color: bgColor), // Cor do rótulo
                               border: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.white),
+                                borderSide: const BorderSide(color: bgColor),
                                 borderRadius: BorderRadius.circular(defaultpd),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.white),
+                                borderSide: const BorderSide(color: bgColor),
                                 // Cor da borda quando selecionado
                                 borderRadius: BorderRadius.circular(defaultpd),
                               ),
                             ),
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: bgColor),
                             onFieldSubmitted: (String value) async {},
                           ),
                           const SizedBox(
@@ -183,7 +166,7 @@ class _AccountPageState extends State<AccountPage> {
                               child: const Text(
                                 'Atualizar',
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: bgColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20),
                               ),
@@ -191,11 +174,7 @@ class _AccountPageState extends State<AccountPage> {
                           ),
                         ],
                       )),
-                  const Spacer(),
                   const AccountMenu(),
-                  const SizedBox(
-                    height: 30,
-                  )
                 ],
               ),
             ),
