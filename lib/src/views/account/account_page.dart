@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:your_matter/controllers/resources/account_menu.dart';
-import 'package:your_matter/controllers/resources/auth.dart';
-import 'package:your_matter/utils/constantes.dart';
+import 'package:your_matter/src/controllers/resources/account_menu.dart';
+import 'package:your_matter/src/controllers/resources/auth.dart';
+import 'package:your_matter/src/utils/constantes.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);

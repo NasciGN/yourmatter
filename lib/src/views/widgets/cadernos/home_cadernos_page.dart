@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:your_matter/models/page.dart';
-import 'package:your_matter/controllers/cadernos_provider.dart';
-import 'package:your_matter/views/widgets/modal_bottom_sheet.dart';
-import 'package:your_matter/views/widgets/cadernos/card_cadernos.dart';
+import 'package:your_matter/src/models/page.dart';
+import 'package:your_matter/src/controllers/cadernos_provider.dart';
+import 'package:your_matter/src/views/widgets/modal_bottom_sheet.dart';
+import 'package:your_matter/src/views/widgets/cadernos/card_cadernos.dart';
 
 import '../../functions/create_Page.dart';
 

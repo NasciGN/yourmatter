@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import '../../controllers/resources/auth.dart';
 import '../../utils/constantes.dart';
-import '../login_page.dart';
+import '../login/login_page.dart';
 
 class LogonForm extends StatefulWidget {
   const LogonForm({super.key});

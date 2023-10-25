@@ -1,13 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:your_matter/src/controllers/resources/firebase_options.dart';
+
 import 'package:get/get.dart';
-import 'package:your_matter/views/account_page.dart';
-import 'package:your_matter/views/home_page.dart';
-import 'package:your_matter/views/login_page.dart';
-import 'package:your_matter/views/login_recovery_pass.dart';
-import 'package:your_matter/views/logon_page.dart';
-import 'controllers/resources/firebase_options.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+
+import 'src/views/views.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +20,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/login',
+      debugShowCheckedModeBanner: false,
+      initialRoute:
+          FirebaseAuth.instance.currentUser != null ? '/home' : '/login',
       getPages: [
         GetPage(name: '/home', page: () => const HomePage()),
         GetPage(name: '/login', page: () => const LoginPage()),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
-import '../../controllers/resources/auth.dart';
-import '../../utils/constantes.dart';
-import '../logon_page.dart';
+import '../../../controllers/resources/auth.dart';
+import '../../../utils/constantes.dart';
+import '../../logon/logon_page.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});

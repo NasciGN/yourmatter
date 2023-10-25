@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
-import 'package:your_matter/models/page.dart';
-import 'package:your_matter/controllers/cadernos_provider.dart';
+import 'package:your_matter/src/models/page.dart';
+import 'package:your_matter/src/controllers/cadernos_provider.dart';
 
 // ignore: must_be_immutable
 class NewPage extends StatefulWidget {

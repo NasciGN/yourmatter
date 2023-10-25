@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../utils/constantes.dart';
-import 'forms/login_form.dart';
+import '../../utils/constantes.dart';
+import 'components/login_form.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
