@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/src/models/page.dart';
 import 'package:your_matter/src/controllers/cadernos_provider.dart';
+import 'package:your_matter/src/views/notebook/new_page.dart';
 import 'package:your_matter/src/views/widgets/modal_bottom_sheet.dart';
 import 'package:your_matter/src/views/widgets/cadernos/card_cadernos.dart';
 
-import '../../functions/create_Page.dart';
 
 class MeusCadernos extends StatefulWidget {
   const MeusCadernos({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:your_matter/src/models/page.dart';
-import 'package:your_matter/src/utils/constantes.dart';
+import 'package:your_matter/src/core/colors/custom_colors.dart';
 
 class CardCaderno extends StatelessWidget {
   final myPage note;

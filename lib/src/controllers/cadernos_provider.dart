@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:your_matter/src/utils/constantes.dart';
+import 'package:your_matter/src/core/colors/custom_colors.dart';
 import '../models/page.dart';
 
 class PageControl {

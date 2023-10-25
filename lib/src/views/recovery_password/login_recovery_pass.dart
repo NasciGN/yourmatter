@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/src/controllers/resources/auth.dart';
-import 'package:your_matter/src/utils/constantes.dart';
+import 'package:your_matter/src/core/colors/custom_colors.dart';
 
 class RecoveryPassPage extends StatefulWidget {
   const RecoveryPassPage({super.key});

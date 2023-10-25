@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import '../../controllers/resources/auth.dart';
-import '../../utils/constantes.dart';
-import '../login/login_page.dart';
+import '../../../controllers/resources/auth.dart';
+import '../../../core/colors/custom_colors.dart';
+import '../../login/login_page.dart';
 
 class LogonForm extends StatefulWidget {
   const LogonForm({super.key});
@@ -80,16 +80,6 @@ class _LogonFormState extends State<LogonForm> {
                   decoration: InputDecoration(
                     labelText: 'Nome',
                     labelStyle: const TextStyle(color: bgColor),
-                    filled: true,
-                    fillColor: bgform,
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
                   ),
                   style: const TextStyle(color: bgColor),
                   validator: (value) {
@@ -122,19 +112,6 @@ class _LogonFormState extends State<LogonForm> {
                   decoration: InputDecoration(
                     labelText: 'E-mail',
                     labelStyle: const TextStyle(color: bgColor),
-                    filled: true,
-                    fillColor: bgform,
-                    // Cor do rótulo
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color:
-                              Colors.white), // Cor da borda quando selecionado
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
                   ),
                   style: const TextStyle(color: bgColor),
                   // Cor do texto
@@ -167,16 +144,6 @@ class _LogonFormState extends State<LogonForm> {
                   decoration: InputDecoration(
                     labelText: 'Senha',
                     labelStyle: const TextStyle(color: bgColor),
-                    filled: true,
-                    fillColor: bgform,
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
                     suffixIcon: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -224,16 +191,6 @@ class _LogonFormState extends State<LogonForm> {
                   decoration: InputDecoration(
                     labelText: 'Senha',
                     labelStyle: const TextStyle(color: bgColor),
-                    filled: true,
-                    fillColor: bgform,
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: bgColor),
-                      borderRadius: BorderRadius.circular(borderform),
-                    ),
                     suffixIcon: GestureDetector(
                       onTap: () {
                         setState(() {

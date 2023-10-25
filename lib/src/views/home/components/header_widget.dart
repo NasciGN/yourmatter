@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:your_matter/src/controllers/user_controller.dart';
-import 'package:your_matter/src/utils/constantes.dart';
+import 'package:your_matter/src/core/colors/custom_colors.dart';
 
 class HeaderWidget extends StatelessWidget {
   HeaderWidget({super.key});
@@ -13,36 +13,34 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: bgform,
-      child: buildHeaderWidget(),
+      child: _buildHeaderWidget(),
     );
   }
 
-  buildHeaderWidget() {
+  _buildHeaderWidget() {
     return Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildAccountWidget(),
-            SizedBox(
-              height: 20,
-            ),
-            buildGreetingsWidget(),
+            _buildAccountWidget(),
+            SizedBox(height: 20,),
+            _buildGreetingsWidget(),
           ],
         ));
   }
 
-  buildAccountWidget() {
+  _buildAccountWidget() {
     return Row(
       children: [
-        buildCircleAvatarAccountButton(),
+        _buildCircleAvatarAccountButton(),
         Spacer(),
-        buildMoreVertIconButton(),
+        _buildMoreVertIconButton(),
       ],
     );
   }
 
-  buildCircleAvatarAccountButton() {
+  _buildCircleAvatarAccountButton() {
     return GestureDetector(
         child: const CircleAvatar(
           backgroundColor: btnColor,
@@ -54,7 +52,7 @@ class HeaderWidget extends StatelessWidget {
         onTap: () => Get.toNamed('/account'));
   }
 
-  buildMoreVertIconButton() {
+  _buildMoreVertIconButton() {
     return IconButton(
         onPressed: () {},
         icon: Icon(
@@ -63,16 +61,16 @@ class HeaderWidget extends StatelessWidget {
         ));
   }
 
-  buildGreetingsWidget() {
+  _buildGreetingsWidget() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(_greetings, style: buildTextStyle()),
+        Text(_greetings, style: _buildTextStyle()),
       ],
     );
   }
 
-  buildTextStyle() {
+  _buildTextStyle() {
     return const TextStyle(
         fontSize: 26.0, fontWeight: FontWeight.bold, color: bgColor);
   }

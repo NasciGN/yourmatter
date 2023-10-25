@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:your_matter/src/controllers/resources/auth.dart';
 
-import '../../utils/constantes.dart';
+import '../../core/colors/custom_colors.dart';
 
 class AccountMenu extends StatefulWidget {
   const AccountMenu({super.key});

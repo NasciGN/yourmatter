@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:your_matter/src/views/logon/logon_form.dart';
-import '../../utils/constantes.dart';
+import 'package:your_matter/src/views/logon/components/logon_form.dart';
+import '../../core/colors/custom_colors.dart';
 
 
 class LogonPage extends StatefulWidget {

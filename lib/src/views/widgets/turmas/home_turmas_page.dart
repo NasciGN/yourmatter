@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_matter/src/utils/constantes.dart';
+import 'package:your_matter/src/core/colors/custom_colors.dart';
 
 class MinhasTurmas extends StatefulWidget {
   const MinhasTurmas({super.key});
